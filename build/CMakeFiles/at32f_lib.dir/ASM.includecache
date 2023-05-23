@@ -1,0 +1,10 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/AT32F435_Firmware_Library/libraries/cmsis/cm4/device_support/startup/gcc/startup_at32f435_437.s
+

@@ -1,0 +1,6 @@
+erase
+h
+loadfile ./output/gpio-led_toggle.hex
+r
+g
+exit
