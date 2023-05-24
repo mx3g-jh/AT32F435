@@ -1,6 +1,6 @@
 erase
 h
-loadfile ./output/gpio-led_toggle.hex
+loadfile .build/output/mx3g-at32f435proj.hex
 r
 g
 exit

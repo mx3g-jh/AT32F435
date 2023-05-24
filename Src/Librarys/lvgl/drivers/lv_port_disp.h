@@ -22,8 +22,7 @@ extern "C" {
 #else
 #include "lvgl/lvgl.h"
 #endif
-#include "ili9341.h"
-// #include "ssd1306.h"
+
 /*********************
  *      DEFINES
  *********************/

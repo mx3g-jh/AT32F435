@@ -25,6 +25,9 @@
 /* includes */
 #include "at32f435_437_board.h"
 #include "at32f435_437_clock.h"
+#include "lvgl.h"
+#include "lv_port_disp.h"
+#include "lv_demos.h"
 
 /** @addtogroup AT32F435_periph_examples
   * @{
@@ -45,11 +48,14 @@ int main(void)
 
   at32_board_init();
 
+  lv_init();
+  lv_port_disp_init();
+
   while(1)
   {
     delay_ms(30);
     at32_led_toggle(LED2);
-    delay_ms(30);
+    delay_ms(40);
     // delay_ms(200);
     // at32_led_toggle(LED3);
     // delay_ms(200);

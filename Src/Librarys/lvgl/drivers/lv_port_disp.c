@@ -142,8 +142,7 @@ void lv_port_disp_init(void)
 static void disp_init(void)
 {
     /*You code here*/
-    TFT_ILI9341_Init();
-    // ssd1306_Init();
+
 }
 
 volatile bool disp_flush_enabled = true;
@@ -169,7 +168,7 @@ static void disp_flush(lv_disp_drv_t * disp_drv, const lv_area_t * area, lv_colo
 {
     if(disp_flush_enabled) {
         /*The most simple case (but also the slowest) to put all pixels to the screen one-by-one*/
-        ILI9341_Show_Image(area->x1,area->y1,area->x2-area->x1+1,area->y2-area->y1+1,(uint8_t *)color_p);
+        // ILI9341_Show_Image(area->x1,area->y1,area->x2-area->x1+1,area->y2-area->y1+1,(uint8_t *)color_p);
     }
 
     /*IMPORTANT!!!
