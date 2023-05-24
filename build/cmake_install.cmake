@@ -1,4 +1,4 @@
-# Install script for directory: /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435
+# Install script for directory: /home/mx3g/Desktop/LCD/at32f413_at-start-f413
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

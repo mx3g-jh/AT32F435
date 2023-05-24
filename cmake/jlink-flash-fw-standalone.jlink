@@ -1,4 +1,4 @@
 h
-loadfile ${HEX_FILE}, 0x8000000
+loadfile ./output/mx3g-at32f435proj.hex, 0x8000000
 r
 q

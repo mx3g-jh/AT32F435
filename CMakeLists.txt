@@ -18,7 +18,7 @@ set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
 set(AT_BSPACK_DIR ${CMAKE_SOURCE_DIR}/AT32F435_Firmware_Library)
 set(CMAKE_DIR ${CMAKE_SOURCE_DIR}/cmake)
-set(MCU_NAME AT32F435CMU7)
+set(MCU_NAME -AT32F435CMU7)
 
 # project settings
 project(at32f435proj C CXX ASM)
@@ -170,14 +170,18 @@ set(PROJECT
 )
 	string(REPLACE "/" "-" PROJECT_NAME ${PROJECT})
 	message( "Include PROJECT " ${PROJECT} " in build as " ${PROJECT_NAME})
-	file(GLOB_RECURSE PROJECT_SOURCES "${CMAKE_SOURCE_DIR}/Src/Core/src/*.*")
+	file(GLOB_RECURSE CORE_SOURCES "${CMAKE_SOURCE_DIR}/Src/Core/src/*.*")
+	file(GLOB_RECURSE APP_SOURCES "${CMAKE_SOURCE_DIR}/Src/App/*.c" "${CMAKE_SOURCE_DIR}/Src/App/*.cpp")
+	file(GLOB_RECURSE DRIVERS_SOURCES "${CMAKE_SOURCE_DIR}/Src/Drivers/*.c" "${CMAKE_SOURCE_DIR}/Src/Drivers/*.cpp")
 
 	set(TARGET ${PROJECT_NAME}.elf)
 	add_executable(${TARGET} 
 		$<TARGET_OBJECTS:at32f_lib>
 		$<TARGET_OBJECTS:middlewares_lib>
 		${AT_BSPACK_DIR}/project/at32f435_437_board/at32f435_437_board.c		
-		${PROJECT_SOURCES}
+		${CORE_SOURCES}
+		${APP_SOURCES}
+		${DRIVERS_SOURCES}
 		${LINKER_SCRIPT}
 	)
 	message("Target added: " ${TARGET})
@@ -188,6 +192,8 @@ set(PROJECT
 			${AT_BSPACK_DIR}/project/at32f435_437_board
 	        ${middleware_headers} ##This might be bad - because I think we have conflicts.... but we can put it after the libs
 			${CMAKE_SOURCE_DIR}/Src/Core/inc
+			${CMAKE_SOURCE_DIR}/Src/App
+			${CMAKE_SOURCE_DIR}/Src/Drivers
 	)
 
 	if(${PROJECT} MATCHES "usb.*|acc.*")

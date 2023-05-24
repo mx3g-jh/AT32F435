@@ -44,19 +44,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /usr/local/bin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E rm -f
+RM = /usr/local/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435
+CMAKE_SOURCE_DIR = /home/mx3g/Desktop/LCD/at32f413_at-start-f413
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build
+CMAKE_BINARY_DIR = /home/mx3g/Desktop/LCD/at32f413_at-start-f413/build
 
 # Utility rule file for jlink_gdb_debug.
 
@@ -67,7 +67,7 @@ include CMakeFiles/jlink_gdb_debug.dir/compiler_depend.make
 include CMakeFiles/jlink_gdb_debug.dir/progress.make
 
 CMakeFiles/jlink_gdb_debug:
-	/opt/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gdb -x /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/cmake/scripts/jlink-debug.gdbinit /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/output/.elf
+	/opt/gcc-arm-none-eabi-7-2017-q4-major/bin/arm-none-eabi-gdb -x /home/mx3g/Desktop/LCD/at32f413_at-start-f413/cmake/scripts/jlink-debug.gdbinit /home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/output/.elf
 
 jlink_gdb_debug: CMakeFiles/jlink_gdb_debug
 jlink_gdb_debug: CMakeFiles/jlink_gdb_debug.dir/build.make
@@ -82,6 +82,6 @@ CMakeFiles/jlink_gdb_debug.dir/clean:
 .PHONY : CMakeFiles/jlink_gdb_debug.dir/clean
 
 CMakeFiles/jlink_gdb_debug.dir/depend:
-	cd /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435 /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435 /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles/jlink_gdb_debug.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/mx3g/Desktop/LCD/at32f413_at-start-f413/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/mx3g/Desktop/LCD/at32f413_at-start-f413 /home/mx3g/Desktop/LCD/at32f413_at-start-f413 /home/mx3g/Desktop/LCD/at32f413_at-start-f413/build /home/mx3g/Desktop/LCD/at32f413_at-start-f413/build /home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/jlink_gdb_debug.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/jlink_gdb_debug.dir/depend
 

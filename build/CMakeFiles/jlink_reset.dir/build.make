@@ -44,19 +44,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /usr/local/bin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E rm -f
+RM = /usr/local/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435
+CMAKE_SOURCE_DIR = /home/mx3g/Desktop/LCD/at32f413_at-start-f413
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build
+CMAKE_BINARY_DIR = /home/mx3g/Desktop/LCD/at32f413_at-start-f413/build
 
 # Utility rule file for jlink_reset.
 
@@ -67,7 +67,7 @@ include CMakeFiles/jlink_reset.dir/compiler_depend.make
 include CMakeFiles/jlink_reset.dir/progress.make
 
 CMakeFiles/jlink_reset:
-	JLinkExe -device AT32F435CMU7 -speed 4000 -if SWD -CommanderScript /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/cmake/scripts/jlink-reset-at32.jlink
+	JLinkExe -device -AT32F435CMU7 -speed 4000 -if SWD -CommanderScript /home/mx3g/Desktop/LCD/at32f413_at-start-f413/cmake/scripts/jlink-reset-at32.jlink
 
 jlink_reset: CMakeFiles/jlink_reset
 jlink_reset: CMakeFiles/jlink_reset.dir/build.make
@@ -82,6 +82,6 @@ CMakeFiles/jlink_reset.dir/clean:
 .PHONY : CMakeFiles/jlink_reset.dir/clean
 
 CMakeFiles/jlink_reset.dir/depend:
-	cd /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435 /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435 /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles/jlink_reset.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/mx3g/Desktop/LCD/at32f413_at-start-f413/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/mx3g/Desktop/LCD/at32f413_at-start-f413 /home/mx3g/Desktop/LCD/at32f413_at-start-f413 /home/mx3g/Desktop/LCD/at32f413_at-start-f413/build /home/mx3g/Desktop/LCD/at32f413_at-start-f413/build /home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/jlink_reset.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/jlink_reset.dir/depend
 

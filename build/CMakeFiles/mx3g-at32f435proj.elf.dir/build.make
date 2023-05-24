@@ -44,19 +44,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /usr/local/bin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E rm -f
+RM = /usr/local/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435
+CMAKE_SOURCE_DIR = /home/mx3g/Desktop/LCD/at32f413_at-start-f413
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build
+CMAKE_BINARY_DIR = /home/mx3g/Desktop/LCD/at32f413_at-start-f413/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/mx3g-at32f435proj.elf.dir/depend.make
@@ -72,58 +72,58 @@ include CMakeFiles/mx3g-at32f435proj.elf.dir/flags.make
 CMakeFiles/mx3g-at32f435proj.elf.dir/AT32F435_Firmware_Library/project/at32f435_437_board/at32f435_437_board.c.obj: CMakeFiles/mx3g-at32f435proj.elf.dir/flags.make
 CMakeFiles/mx3g-at32f435proj.elf.dir/AT32F435_Firmware_Library/project/at32f435_437_board/at32f435_437_board.c.obj: ../AT32F435_Firmware_Library/project/at32f435_437_board/at32f435_437_board.c
 CMakeFiles/mx3g-at32f435proj.elf.dir/AT32F435_Firmware_Library/project/at32f435_437_board/at32f435_437_board.c.obj: CMakeFiles/mx3g-at32f435proj.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/mx3g-at32f435proj.elf.dir/AT32F435_Firmware_Library/project/at32f435_437_board/at32f435_437_board.c.obj"
-	/opt/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/mx3g-at32f435proj.elf.dir/AT32F435_Firmware_Library/project/at32f435_437_board/at32f435_437_board.c.obj -MF CMakeFiles/mx3g-at32f435proj.elf.dir/AT32F435_Firmware_Library/project/at32f435_437_board/at32f435_437_board.c.obj.d -o CMakeFiles/mx3g-at32f435proj.elf.dir/AT32F435_Firmware_Library/project/at32f435_437_board/at32f435_437_board.c.obj -c /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/AT32F435_Firmware_Library/project/at32f435_437_board/at32f435_437_board.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/mx3g-at32f435proj.elf.dir/AT32F435_Firmware_Library/project/at32f435_437_board/at32f435_437_board.c.obj"
+	/opt/gcc-arm-none-eabi-7-2017-q4-major/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/mx3g-at32f435proj.elf.dir/AT32F435_Firmware_Library/project/at32f435_437_board/at32f435_437_board.c.obj -MF CMakeFiles/mx3g-at32f435proj.elf.dir/AT32F435_Firmware_Library/project/at32f435_437_board/at32f435_437_board.c.obj.d -o CMakeFiles/mx3g-at32f435proj.elf.dir/AT32F435_Firmware_Library/project/at32f435_437_board/at32f435_437_board.c.obj -c /home/mx3g/Desktop/LCD/at32f413_at-start-f413/AT32F435_Firmware_Library/project/at32f435_437_board/at32f435_437_board.c
 
 CMakeFiles/mx3g-at32f435proj.elf.dir/AT32F435_Firmware_Library/project/at32f435_437_board/at32f435_437_board.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/mx3g-at32f435proj.elf.dir/AT32F435_Firmware_Library/project/at32f435_437_board/at32f435_437_board.c.i"
-	/opt/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/AT32F435_Firmware_Library/project/at32f435_437_board/at32f435_437_board.c > CMakeFiles/mx3g-at32f435proj.elf.dir/AT32F435_Firmware_Library/project/at32f435_437_board/at32f435_437_board.c.i
+	/opt/gcc-arm-none-eabi-7-2017-q4-major/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mx3g/Desktop/LCD/at32f413_at-start-f413/AT32F435_Firmware_Library/project/at32f435_437_board/at32f435_437_board.c > CMakeFiles/mx3g-at32f435proj.elf.dir/AT32F435_Firmware_Library/project/at32f435_437_board/at32f435_437_board.c.i
 
 CMakeFiles/mx3g-at32f435proj.elf.dir/AT32F435_Firmware_Library/project/at32f435_437_board/at32f435_437_board.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/mx3g-at32f435proj.elf.dir/AT32F435_Firmware_Library/project/at32f435_437_board/at32f435_437_board.c.s"
-	/opt/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/AT32F435_Firmware_Library/project/at32f435_437_board/at32f435_437_board.c -o CMakeFiles/mx3g-at32f435proj.elf.dir/AT32F435_Firmware_Library/project/at32f435_437_board/at32f435_437_board.c.s
+	/opt/gcc-arm-none-eabi-7-2017-q4-major/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mx3g/Desktop/LCD/at32f413_at-start-f413/AT32F435_Firmware_Library/project/at32f435_437_board/at32f435_437_board.c -o CMakeFiles/mx3g-at32f435proj.elf.dir/AT32F435_Firmware_Library/project/at32f435_437_board/at32f435_437_board.c.s
 
 CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_clock.c.obj: CMakeFiles/mx3g-at32f435proj.elf.dir/flags.make
 CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_clock.c.obj: ../Src/Core/src/at32f435_437_clock.c
 CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_clock.c.obj: CMakeFiles/mx3g-at32f435proj.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_clock.c.obj"
-	/opt/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_clock.c.obj -MF CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_clock.c.obj.d -o CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_clock.c.obj -c /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/Src/Core/src/at32f435_437_clock.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_clock.c.obj"
+	/opt/gcc-arm-none-eabi-7-2017-q4-major/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_clock.c.obj -MF CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_clock.c.obj.d -o CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_clock.c.obj -c /home/mx3g/Desktop/LCD/at32f413_at-start-f413/Src/Core/src/at32f435_437_clock.c
 
 CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_clock.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_clock.c.i"
-	/opt/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/Src/Core/src/at32f435_437_clock.c > CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_clock.c.i
+	/opt/gcc-arm-none-eabi-7-2017-q4-major/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mx3g/Desktop/LCD/at32f413_at-start-f413/Src/Core/src/at32f435_437_clock.c > CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_clock.c.i
 
 CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_clock.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_clock.c.s"
-	/opt/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/Src/Core/src/at32f435_437_clock.c -o CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_clock.c.s
+	/opt/gcc-arm-none-eabi-7-2017-q4-major/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mx3g/Desktop/LCD/at32f413_at-start-f413/Src/Core/src/at32f435_437_clock.c -o CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_clock.c.s
 
 CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_int.c.obj: CMakeFiles/mx3g-at32f435proj.elf.dir/flags.make
 CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_int.c.obj: ../Src/Core/src/at32f435_437_int.c
 CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_int.c.obj: CMakeFiles/mx3g-at32f435proj.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_int.c.obj"
-	/opt/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_int.c.obj -MF CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_int.c.obj.d -o CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_int.c.obj -c /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/Src/Core/src/at32f435_437_int.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_int.c.obj"
+	/opt/gcc-arm-none-eabi-7-2017-q4-major/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_int.c.obj -MF CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_int.c.obj.d -o CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_int.c.obj -c /home/mx3g/Desktop/LCD/at32f413_at-start-f413/Src/Core/src/at32f435_437_int.c
 
 CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_int.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_int.c.i"
-	/opt/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/Src/Core/src/at32f435_437_int.c > CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_int.c.i
+	/opt/gcc-arm-none-eabi-7-2017-q4-major/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mx3g/Desktop/LCD/at32f413_at-start-f413/Src/Core/src/at32f435_437_int.c > CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_int.c.i
 
 CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_int.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_int.c.s"
-	/opt/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/Src/Core/src/at32f435_437_int.c -o CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_int.c.s
+	/opt/gcc-arm-none-eabi-7-2017-q4-major/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mx3g/Desktop/LCD/at32f413_at-start-f413/Src/Core/src/at32f435_437_int.c -o CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_int.c.s
 
 CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/main.c.obj: CMakeFiles/mx3g-at32f435proj.elf.dir/flags.make
 CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/main.c.obj: ../Src/Core/src/main.c
 CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/main.c.obj: CMakeFiles/mx3g-at32f435proj.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/main.c.obj"
-	/opt/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/main.c.obj -MF CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/main.c.obj.d -o CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/main.c.obj -c /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/Src/Core/src/main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/main.c.obj"
+	/opt/gcc-arm-none-eabi-7-2017-q4-major/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/main.c.obj -MF CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/main.c.obj.d -o CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/main.c.obj -c /home/mx3g/Desktop/LCD/at32f413_at-start-f413/Src/Core/src/main.c
 
 CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/main.c.i"
-	/opt/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/Src/Core/src/main.c > CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/main.c.i
+	/opt/gcc-arm-none-eabi-7-2017-q4-major/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mx3g/Desktop/LCD/at32f413_at-start-f413/Src/Core/src/main.c > CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/main.c.i
 
 CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/main.c.s"
-	/opt/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/Src/Core/src/main.c -o CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/main.c.s
+	/opt/gcc-arm-none-eabi-7-2017-q4-major/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mx3g/Desktop/LCD/at32f413_at-start-f413/Src/Core/src/main.c -o CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/main.c.s
 
 # Object files for target mx3g-at32f435proj.elf
 mx3g__at32f435proj_elf_OBJECTS = \
@@ -134,37 +134,37 @@ mx3g__at32f435proj_elf_OBJECTS = \
 
 # External object files for target mx3g-at32f435proj.elf
 mx3g__at32f435proj_elf_EXTERNAL_OBJECTS = \
-"/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/cmsis/cm4/device_support/startup/gcc/startup_at32f435_437.s.obj" \
-"/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/cmsis/cm4/device_support/system_at32f435_437.c.obj" \
-"/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_acc.c.obj" \
-"/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_adc.c.obj" \
-"/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_can.c.obj" \
-"/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_crc.c.obj" \
-"/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_crm.c.obj" \
-"/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_dac.c.obj" \
-"/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_debug.c.obj" \
-"/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_dma.c.obj" \
-"/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_dvp.c.obj" \
-"/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_edma.c.obj" \
-"/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_emac.c.obj" \
-"/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_ertc.c.obj" \
-"/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_exint.c.obj" \
-"/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_flash.c.obj" \
-"/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_gpio.c.obj" \
-"/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_i2c.c.obj" \
-"/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_misc.c.obj" \
-"/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_pwc.c.obj" \
-"/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_qspi.c.obj" \
-"/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_scfg.c.obj" \
-"/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_sdio.c.obj" \
-"/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_spi.c.obj" \
-"/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_tmr.c.obj" \
-"/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_usart.c.obj" \
-"/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_usb.c.obj" \
-"/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_wdt.c.obj" \
-"/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_wwdt.c.obj" \
-"/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_xmc.c.obj" \
-"/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles/middlewares_lib.dir/AT32F435_Firmware_Library/middlewares/i2c_application_library/i2c_application.c.obj"
+"/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/cmsis/cm4/device_support/startup/gcc/startup_at32f435_437.s.obj" \
+"/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/cmsis/cm4/device_support/system_at32f435_437.c.obj" \
+"/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_acc.c.obj" \
+"/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_adc.c.obj" \
+"/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_can.c.obj" \
+"/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_crc.c.obj" \
+"/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_crm.c.obj" \
+"/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_dac.c.obj" \
+"/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_debug.c.obj" \
+"/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_dma.c.obj" \
+"/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_dvp.c.obj" \
+"/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_edma.c.obj" \
+"/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_emac.c.obj" \
+"/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_ertc.c.obj" \
+"/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_exint.c.obj" \
+"/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_flash.c.obj" \
+"/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_gpio.c.obj" \
+"/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_i2c.c.obj" \
+"/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_misc.c.obj" \
+"/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_pwc.c.obj" \
+"/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_qspi.c.obj" \
+"/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_scfg.c.obj" \
+"/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_sdio.c.obj" \
+"/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_spi.c.obj" \
+"/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_tmr.c.obj" \
+"/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_usart.c.obj" \
+"/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_usb.c.obj" \
+"/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_wdt.c.obj" \
+"/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_wwdt.c.obj" \
+"/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_xmc.c.obj" \
+"/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/middlewares_lib.dir/AT32F435_Firmware_Library/middlewares/i2c_application_library/i2c_application.c.obj"
 
 output/mx3g-at32f435proj.elf: CMakeFiles/mx3g-at32f435proj.elf.dir/AT32F435_Firmware_Library/project/at32f435_437_board/at32f435_437_board.c.obj
 output/mx3g-at32f435proj.elf: CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_clock.c.obj
@@ -203,12 +203,12 @@ output/mx3g-at32f435proj.elf: CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library
 output/mx3g-at32f435proj.elf: CMakeFiles/middlewares_lib.dir/AT32F435_Firmware_Library/middlewares/i2c_application_library/i2c_application.c.obj
 output/mx3g-at32f435proj.elf: CMakeFiles/mx3g-at32f435proj.elf.dir/build.make
 output/mx3g-at32f435proj.elf: CMakeFiles/mx3g-at32f435proj.elf.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable output/mx3g-at32f435proj.elf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable output/mx3g-at32f435proj.elf"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mx3g-at32f435proj.elf.dir/link.txt --verbose=$(VERBOSE)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/output/mx3g-at32f435proj.hex "
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold " Building /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/output/mx3g-at32f435proj.bin"
-	arm-none-eabi-objcopy -Oihex /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/output/mx3g-at32f435proj.elf /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/output/mx3g-at32f435proj.hex
-	arm-none-eabi-objcopy -Obinary /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/output/mx3g-at32f435proj.elf /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/output/mx3g-at32f435proj.bin
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building /home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/output/mx3g-at32f435proj.hex "
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold " Building /home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/output/mx3g-at32f435proj.bin"
+	arm-none-eabi-objcopy -Oihex /home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/output/mx3g-at32f435proj.elf /home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/output/mx3g-at32f435proj.hex
+	arm-none-eabi-objcopy -Obinary /home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/output/mx3g-at32f435proj.elf /home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/output/mx3g-at32f435proj.bin
 
 # Rule to build all files generated by this target.
 CMakeFiles/mx3g-at32f435proj.elf.dir/build: output/mx3g-at32f435proj.elf
@@ -219,6 +219,6 @@ CMakeFiles/mx3g-at32f435proj.elf.dir/clean:
 .PHONY : CMakeFiles/mx3g-at32f435proj.elf.dir/clean
 
 CMakeFiles/mx3g-at32f435proj.elf.dir/depend:
-	cd /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435 /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435 /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles/mx3g-at32f435proj.elf.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/mx3g/Desktop/LCD/at32f413_at-start-f413/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/mx3g/Desktop/LCD/at32f413_at-start-f413 /home/mx3g/Desktop/LCD/at32f413_at-start-f413 /home/mx3g/Desktop/LCD/at32f413_at-start-f413/build /home/mx3g/Desktop/LCD/at32f413_at-start-f413/build /home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/mx3g-at32f435proj.elf.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/mx3g-at32f435proj.elf.dir/depend
 

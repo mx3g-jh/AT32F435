@@ -49,7 +49,7 @@ int main(void)
   {
     delay_ms(100);
     at32_led_toggle(LED2);
-       delay_ms(100);
+    delay_ms(30);
     // delay_ms(200);
     // at32_led_toggle(LED3);
     // delay_ms(200);

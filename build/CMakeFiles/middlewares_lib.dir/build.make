@@ -44,19 +44,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /usr/local/bin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E rm -f
+RM = /usr/local/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435
+CMAKE_SOURCE_DIR = /home/mx3g/Desktop/LCD/at32f413_at-start-f413
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build
+CMAKE_BINARY_DIR = /home/mx3g/Desktop/LCD/at32f413_at-start-f413/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/middlewares_lib.dir/depend.make
@@ -72,16 +72,16 @@ include CMakeFiles/middlewares_lib.dir/flags.make
 CMakeFiles/middlewares_lib.dir/AT32F435_Firmware_Library/middlewares/i2c_application_library/i2c_application.c.obj: CMakeFiles/middlewares_lib.dir/flags.make
 CMakeFiles/middlewares_lib.dir/AT32F435_Firmware_Library/middlewares/i2c_application_library/i2c_application.c.obj: ../AT32F435_Firmware_Library/middlewares/i2c_application_library/i2c_application.c
 CMakeFiles/middlewares_lib.dir/AT32F435_Firmware_Library/middlewares/i2c_application_library/i2c_application.c.obj: CMakeFiles/middlewares_lib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/middlewares_lib.dir/AT32F435_Firmware_Library/middlewares/i2c_application_library/i2c_application.c.obj"
-	/opt/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/middlewares_lib.dir/AT32F435_Firmware_Library/middlewares/i2c_application_library/i2c_application.c.obj -MF CMakeFiles/middlewares_lib.dir/AT32F435_Firmware_Library/middlewares/i2c_application_library/i2c_application.c.obj.d -o CMakeFiles/middlewares_lib.dir/AT32F435_Firmware_Library/middlewares/i2c_application_library/i2c_application.c.obj -c /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/AT32F435_Firmware_Library/middlewares/i2c_application_library/i2c_application.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/middlewares_lib.dir/AT32F435_Firmware_Library/middlewares/i2c_application_library/i2c_application.c.obj"
+	/opt/gcc-arm-none-eabi-7-2017-q4-major/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/middlewares_lib.dir/AT32F435_Firmware_Library/middlewares/i2c_application_library/i2c_application.c.obj -MF CMakeFiles/middlewares_lib.dir/AT32F435_Firmware_Library/middlewares/i2c_application_library/i2c_application.c.obj.d -o CMakeFiles/middlewares_lib.dir/AT32F435_Firmware_Library/middlewares/i2c_application_library/i2c_application.c.obj -c /home/mx3g/Desktop/LCD/at32f413_at-start-f413/AT32F435_Firmware_Library/middlewares/i2c_application_library/i2c_application.c
 
 CMakeFiles/middlewares_lib.dir/AT32F435_Firmware_Library/middlewares/i2c_application_library/i2c_application.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/middlewares_lib.dir/AT32F435_Firmware_Library/middlewares/i2c_application_library/i2c_application.c.i"
-	/opt/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/AT32F435_Firmware_Library/middlewares/i2c_application_library/i2c_application.c > CMakeFiles/middlewares_lib.dir/AT32F435_Firmware_Library/middlewares/i2c_application_library/i2c_application.c.i
+	/opt/gcc-arm-none-eabi-7-2017-q4-major/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mx3g/Desktop/LCD/at32f413_at-start-f413/AT32F435_Firmware_Library/middlewares/i2c_application_library/i2c_application.c > CMakeFiles/middlewares_lib.dir/AT32F435_Firmware_Library/middlewares/i2c_application_library/i2c_application.c.i
 
 CMakeFiles/middlewares_lib.dir/AT32F435_Firmware_Library/middlewares/i2c_application_library/i2c_application.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/middlewares_lib.dir/AT32F435_Firmware_Library/middlewares/i2c_application_library/i2c_application.c.s"
-	/opt/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/AT32F435_Firmware_Library/middlewares/i2c_application_library/i2c_application.c -o CMakeFiles/middlewares_lib.dir/AT32F435_Firmware_Library/middlewares/i2c_application_library/i2c_application.c.s
+	/opt/gcc-arm-none-eabi-7-2017-q4-major/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mx3g/Desktop/LCD/at32f413_at-start-f413/AT32F435_Firmware_Library/middlewares/i2c_application_library/i2c_application.c -o CMakeFiles/middlewares_lib.dir/AT32F435_Firmware_Library/middlewares/i2c_application_library/i2c_application.c.s
 
 middlewares_lib: CMakeFiles/middlewares_lib.dir/AT32F435_Firmware_Library/middlewares/i2c_application_library/i2c_application.c.obj
 middlewares_lib: CMakeFiles/middlewares_lib.dir/build.make
@@ -96,6 +96,6 @@ CMakeFiles/middlewares_lib.dir/clean:
 .PHONY : CMakeFiles/middlewares_lib.dir/clean
 
 CMakeFiles/middlewares_lib.dir/depend:
-	cd /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435 /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435 /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build /home/mx3g/Desktop/AT_make/AT32F435/at32f435_at-start-f435/build/CMakeFiles/middlewares_lib.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/mx3g/Desktop/LCD/at32f413_at-start-f413/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/mx3g/Desktop/LCD/at32f413_at-start-f413 /home/mx3g/Desktop/LCD/at32f413_at-start-f413 /home/mx3g/Desktop/LCD/at32f413_at-start-f413/build /home/mx3g/Desktop/LCD/at32f413_at-start-f413/build /home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/middlewares_lib.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/middlewares_lib.dir/depend
 
