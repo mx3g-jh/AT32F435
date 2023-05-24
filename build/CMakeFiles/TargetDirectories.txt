@@ -1,9 +1,0 @@
-/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/at32f_lib.dir
-/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/middlewares_lib.dir
-/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/mx3g-at32f435proj.elf.dir
-/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/jlink_flash.dir
-/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/jlink_reset.dir
-/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/jlink_gdb_server.dir
-/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/jlink_gdb_debug.dir
-/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/edit_cache.dir
-/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles/rebuild_cache.dir
