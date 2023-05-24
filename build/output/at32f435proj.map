@@ -2791,16 +2791,16 @@ LOAD /opt/gcc-arm-none-eabi-7-2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/t
                 0x000000000000058f       0x22 /opt/gcc-arm-none-eabi-7-2017-q4-major/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
 OUTPUT(output/mx3g-at32f435proj.elf elf32-littlearm)
 
-.debug_info     0x0000000000000000     0xb848
+.debug_info     0x0000000000000000     0xb847
  .debug_info    0x0000000000000000     0x291b CMakeFiles/mx3g-at32f435proj.elf.dir/AT32F435_Firmware_Library/project/at32f435_437_board/at32f435_437_board.c.obj
  .debug_info    0x000000000000291b     0x13d3 CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_clock.c.obj
  .debug_info    0x0000000000003cee      0x137 CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/at32f435_437_int.c.obj
- .debug_info    0x0000000000003e25      0x975 CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/main.c.obj
- .debug_info    0x000000000000479a       0x22 CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/cmsis/cm4/device_support/startup/gcc/startup_at32f435_437.s.obj
- .debug_info    0x00000000000047bc     0x1e5e CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/cmsis/cm4/device_support/system_at32f435_437.c.obj
- .debug_info    0x000000000000661a     0x2eda CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_crm.c.obj
- .debug_info    0x00000000000094f4     0x18bd CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_gpio.c.obj
- .debug_info    0x000000000000adb1      0xa97 CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_misc.c.obj
+ .debug_info    0x0000000000003e25      0x974 CMakeFiles/mx3g-at32f435proj.elf.dir/Src/Core/src/main.c.obj
+ .debug_info    0x0000000000004799       0x22 CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/cmsis/cm4/device_support/startup/gcc/startup_at32f435_437.s.obj
+ .debug_info    0x00000000000047bb     0x1e5e CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/cmsis/cm4/device_support/system_at32f435_437.c.obj
+ .debug_info    0x0000000000006619     0x2eda CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_crm.c.obj
+ .debug_info    0x00000000000094f3     0x18bd CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_gpio.c.obj
+ .debug_info    0x000000000000adb0      0xa97 CMakeFiles/at32f_lib.dir/AT32F435_Firmware_Library/libraries/drivers/src/at32f435_437_misc.c.obj
 
 .debug_abbrev   0x0000000000000000     0x1108
  .debug_abbrev  0x0000000000000000      0x37d CMakeFiles/mx3g-at32f435proj.elf.dir/AT32F435_Firmware_Library/project/at32f435_437_board/at32f435_437_board.c.obj

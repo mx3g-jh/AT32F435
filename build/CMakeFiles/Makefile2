@@ -138,8 +138,8 @@ CMakeFiles/middlewares_lib.dir/clean:
 # Target rules for target CMakeFiles/mx3g-at32f435proj.elf.dir
 
 # All Build rule for target.
-CMakeFiles/mx3g-at32f435proj.elf.dir/all: CMakeFiles/middlewares_lib.dir/all
 CMakeFiles/mx3g-at32f435proj.elf.dir/all: CMakeFiles/at32f_lib.dir/all
+CMakeFiles/mx3g-at32f435proj.elf.dir/all: CMakeFiles/middlewares_lib.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mx3g-at32f435proj.elf.dir/build.make CMakeFiles/mx3g-at32f435proj.elf.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mx3g-at32f435proj.elf.dir/build.make CMakeFiles/mx3g-at32f435proj.elf.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/CMakeFiles --progress-num=32,33,34,35,36 "Built target mx3g-at32f435proj.elf"

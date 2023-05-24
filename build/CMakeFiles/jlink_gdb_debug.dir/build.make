@@ -67,7 +67,7 @@ include CMakeFiles/jlink_gdb_debug.dir/compiler_depend.make
 include CMakeFiles/jlink_gdb_debug.dir/progress.make
 
 CMakeFiles/jlink_gdb_debug:
-	/opt/gcc-arm-none-eabi-7-2017-q4-major/bin/arm-none-eabi-gdb -x /home/mx3g/Desktop/LCD/at32f413_at-start-f413/cmake/scripts/jlink-debug.gdbinit /home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/output/.elf
+	/opt/gcc-arm-none-eabi-7-2017-q4-major/bin/arm-none-eabi-gdb -x /home/mx3g/Desktop/LCD/at32f413_at-start-f413/cmake/scripts/jlink-debug.gdbinit /home/mx3g/Desktop/LCD/at32f413_at-start-f413/build/output/mx3g-at32f435proj.elf
 
 jlink_gdb_debug: CMakeFiles/jlink_gdb_debug
 jlink_gdb_debug: CMakeFiles/jlink_gdb_debug.dir/build.make

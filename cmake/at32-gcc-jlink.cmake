@@ -15,7 +15,7 @@ add_custom_target(jlink_gdb_server
 )
 
 add_custom_target(jlink_gdb_debug 
-    COMMAND ${ARM_GDB_EXECUTABLE} -x ${CMAKE_CURRENT_LIST_DIR}/scripts/jlink-debug.gdbinit ${PROJECT_BINARY_DIR}/${EXAMPLE_NAME}.elf
+    COMMAND ${ARM_GDB_EXECUTABLE} -x ${CMAKE_CURRENT_LIST_DIR}/scripts/jlink-debug.gdbinit ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.elf
 )
 
 # # string should be less than 30 bytes

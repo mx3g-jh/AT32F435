@@ -47,7 +47,7 @@ int main(void)
 
   while(1)
   {
-    delay_ms(100);
+    delay_ms(30);
     at32_led_toggle(LED2);
     delay_ms(30);
     // delay_ms(200);
