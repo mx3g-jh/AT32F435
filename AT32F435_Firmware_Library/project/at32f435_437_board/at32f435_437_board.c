@@ -163,7 +163,7 @@ void at32_board_init()
   // at32_led_off(LED4);
 
   /* configure button in at_start board */
-  at32_button_init();
+  // at32_button_init();
 }
 
 /**

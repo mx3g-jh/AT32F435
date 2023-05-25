@@ -24,7 +24,7 @@
 
 /* includes ------------------------------------------------------------------*/
 #include "at32f435_437_int.h"
-
+#include "main.h"
 /** @addtogroup AT32F435_periph_examples
   * @{
   */
@@ -133,7 +133,19 @@ void SysTick_Handler(void)
 /**
   * @}
   */
-
+/**
+ * @brief 定时器1~10中断服务函数
+ * 定时器1周期：1ms
+ */
+// void TMR1_OVF_TMR10_IRQHandler(void)
+// {
+//     if(tmr_flag_get(TMR1, TMR_OVF_FLAG) != RESET)
+//     {
+//         tmr_flag_clear(TMR1, TMR_OVF_FLAG);
+//         System_Timer_Flag_Set(1);
+//         lv_tick_inc(1);
+//     }
+// }
 /**
   * @}
   */

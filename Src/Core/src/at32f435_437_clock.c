@@ -39,8 +39,8 @@
   *         - apb1div             = 2
   *         - apb1clk             = 144000000
   *         - pll_ns              = 144
-  *         - pll_ms              = 1
-  *         - pll_fr              = 8
+  *         - pll_ms              = 2
+  *         - pll_fr              = 4
   * @param  none
   * @retval none
   */
@@ -81,7 +81,7 @@ void system_clock_config(void)
 
   if pll clock source selects hext with other frequency values, or configure pll to other
   frequency values, please use the at32 new clock  configuration tool for configuration.  */
-  crm_pll_config(CRM_PLL_SOURCE_HEXT, 144, 1, CRM_PLL_FR_8);
+  crm_pll_config(CRM_PLL_SOURCE_HEXT, 72, 2, CRM_PLL_FR_8);
 
   /* enable pll */
   crm_clock_source_enable(CRM_CLOCK_SOURCE_PLL, TRUE);

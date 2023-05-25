@@ -18,7 +18,7 @@ set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
 set(AT_BSPACK_DIR ${CMAKE_SOURCE_DIR}/AT32F435_Firmware_Library)
 set(CMAKE_DIR ${CMAKE_SOURCE_DIR}/cmake)
-set(MCU_NAME AT32F435CMU7)
+set(MCU_NAME -AT32F435CMU7)
 
 # project settings
 project(at32f435proj C CXX ASM)
@@ -89,6 +89,26 @@ endforeach()
 
 add_definitions(#[[TODO insert definitions, ex. -DUSE_HAL_DRIVER -DCORE_CM4 -DDEBUG -DSTM32H745xx]])
 
+# include_directories(
+# 	${CMAKE_SOURCE_DIR}/Src/Drivers/st7789/inc
+# 	${CMAKE_SOURCE_DIR}/Src/Core/inc
+# 	${CMAKE_SOURCE_DIR}/Src/Drivers/st7789/inc
+# 	${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/drivers
+# 	${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/demos
+# 	${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/demos/widgets
+# 	${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/demos/music
+# 	${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/demos/benchmark
+# 	${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/demos/stress
+# 	${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl 
+# 	${AT_BSPACK_DIR}/libraries/drivers/inc
+# 	${AT_BSPACK_DIR}/libraries/cmsis/cm4/device_support
+# 	${AT_BSPACK_DIR}/libraries/cmsis/cm4/core_support
+# 	${AT_BSPACK_DIR}/project/at32f435_437_board
+# 	${middleware_headers} ##This might be bad - because I think we have conflicts.... but we can put it after the libs
+# 	${CMAKE_SOURCE_DIR}/Src/Core/inc
+# 	${CMAKE_SOURCE_DIR}/Src/App
+# )
+
 #AT32F BSP Libraries
 file(GLOB_RECURSE LIB_SOURCES
     "${AT_BSPACK_DIR}/libraries/drivers/src/*.*"
@@ -98,7 +118,7 @@ file(GLOB_RECURSE LIB_SOURCES
 add_library(at32f_lib OBJECT ${LIB_SOURCES})
 target_include_directories(at32f_lib PRIVATE
         ${AT_BSPACK_DIR}/libraries/drivers/inc
-	${AT_BSPACK_DIR}/project/at_start_f435/templates/inc
+        ${CMAKE_SOURCE_DIR}/Src/Core/inc
         ${AT_BSPACK_DIR}/libraries/cmsis/cm4/device_support
         ${AT_BSPACK_DIR}/libraries/cmsis/cm4/core_support
         )
@@ -361,16 +381,16 @@ set(LVGL_LIBS_SRC
     ${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/drivers/lv_port_fs.c
 )
 
-add_library(lvgl_lib OBJECT ${LVGL_LIBS_SRC})
-include_directories(lvgl_lib PRIVATE
-		${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/drivers
-		${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/demos
-		${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/demos/widgets
-		${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/demos/music
-		${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/demos/benchmark
-		${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/demos/stress
-		${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl 
-        )
+# add_library(lvgl_lib OBJECT ${LVGL_LIBS_SRC})
+# include_directories(lvgl_lib PRIVATE
+# 		${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/drivers
+# 		${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/demos
+# 		${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/demos/widgets
+# 		${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/demos/music
+# 		${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/demos/benchmark
+# 		${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/demos/stress
+# 		${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl
+#         )
 
 #Middlewares for Examples
 file(GLOB_RECURSE MIDDLEWARES_SOURCES
@@ -386,7 +406,7 @@ target_include_directories(middlewares_lib PRIVATE
         ${AT_BSPACK_DIR}/libraries/cmsis/cm4/device_support
         ${AT_BSPACK_DIR}/libraries/cmsis/cm4/core_support
         ${AT_BSPACK_DIR}/libraries/drivers/inc
-	${AT_BSPACK_DIR}/project/at_start_f435/templates/inc
+        ${CMAKE_SOURCE_DIR}/Src/Core/inc
 )
 
 #USB Middleware for USB Examples
@@ -441,19 +461,18 @@ set(PROJECT
 	message( "Include PROJECT " ${PROJECT} " in build as " ${PROJECT_NAME})
 	file(GLOB_RECURSE CORE_SOURCES "${CMAKE_SOURCE_DIR}/Src/Core/src/*.*")
 	file(GLOB_RECURSE APP_SOURCES "${CMAKE_SOURCE_DIR}/Src/App/*.c" "${CMAKE_SOURCE_DIR}/Src/App/*.cpp")
-	file(GLOB_RECURSE DRIVERS_SOURCES "${CMAKE_SOURCE_DIR}/Src/Drivers/*.c" "${CMAKE_SOURCE_DIR}/Src/Drivers/*.cpp")
 
 	set(TARGET ${PROJECT_NAME}.elf)
 	add_executable(${TARGET} 
 		$<TARGET_OBJECTS:at32f_lib>
 		$<TARGET_OBJECTS:middlewares_lib>
-		${AT_BSPACK_DIR}/project/at32f435_437_board/at32f435_437_board.c		
+		${AT_BSPACK_DIR}/project/at32f435_437_board/at32f435_437_board.c
+		${LVGL_LIBS_SRC}		
 		${CORE_SOURCES}
 		${APP_SOURCES}
-		${DRIVERS_SOURCES}
 		${LINKER_SCRIPT}
 	)
-	target_link_libraries(${TARGET} PUBLIC lvgl_lib)
+	# target_link_libraries(${TARGET} PUBLIC lvgl_lib)
 	message("Target added: " ${TARGET})
 	target_include_directories(${TARGET} PRIVATE 
         	${AT_BSPACK_DIR}/libraries/drivers/inc
@@ -463,7 +482,13 @@ set(PROJECT
 	        ${middleware_headers} ##This might be bad - because I think we have conflicts.... but we can put it after the libs
 			${CMAKE_SOURCE_DIR}/Src/Core/inc
 			${CMAKE_SOURCE_DIR}/Src/App
-			${CMAKE_SOURCE_DIR}/Src/Drivers
+			${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/drivers
+			${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/demos
+			${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/demos/widgets
+			${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/demos/music
+			${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/demos/benchmark
+			${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/demos/stress
+			${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl
 	)
 
 	if(${PROJECT} MATCHES "usb.*|acc.*")

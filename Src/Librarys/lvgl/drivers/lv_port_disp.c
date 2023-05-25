@@ -16,7 +16,7 @@
  *      DEFINES
  *********************/
 #define MY_DISP_HOR_RES    240
-#define MY_DISP_VER_RES    320
+#define MY_DISP_VER_RES    240
 
 #ifndef MY_DISP_HOR_RES
     #warning Please define or replace the macro MY_DISP_HOR_RES with the actual screen width, default value 320 is used for now.
@@ -86,15 +86,15 @@ void lv_port_disp_init(void)
      */
 
     /* Example for 1) */
-    static lv_disp_draw_buf_t draw_buf_dsc_1;
-    static lv_color_t buf_1[MY_DISP_HOR_RES * 10];                          /*A buffer for 10 rows*/
-    lv_disp_draw_buf_init(&draw_buf_dsc_1, buf_1, NULL, MY_DISP_HOR_RES * 10);   /*Initialize the display buffer*/
+    // static lv_disp_draw_buf_t draw_buf_dsc_1;
+    // static lv_color_t buf_1[MY_DISP_HOR_RES * 10];                          /*A buffer for 10 rows*/
+    // lv_disp_draw_buf_init(&draw_buf_dsc_1, buf_1, NULL, MY_DISP_HOR_RES * 10);   /*Initialize the display buffer*/
 
     /* Example for 2) */
-    // static lv_disp_draw_buf_t draw_buf_dsc_2;
-    // static lv_color_t buf_2_1[MY_DISP_HOR_RES * 10];                        /*A buffer for 10 rows*/
-    // static lv_color_t buf_2_2[MY_DISP_HOR_RES * 10];                        /*An other buffer for 10 rows*/
-    // lv_disp_draw_buf_init(&draw_buf_dsc_2, buf_2_1, buf_2_2, MY_DISP_HOR_RES * 10);   /*Initialize the display buffer*/
+    static lv_disp_draw_buf_t draw_buf_dsc_2;
+    static lv_color_t buf_2_1[MY_DISP_HOR_RES * 48];                        /*A buffer for 10 rows*/
+    static lv_color_t buf_2_2[MY_DISP_HOR_RES * 48];                        /*An other buffer for 10 rows*/
+    lv_disp_draw_buf_init(&draw_buf_dsc_2, buf_2_1, buf_2_2, MY_DISP_HOR_RES * 48);   /*Initialize the display buffer*/
 
     /* Example for 3) also set disp_drv.full_refresh = 1 below*/
     // static lv_disp_draw_buf_t draw_buf_dsc_3;
@@ -120,7 +120,7 @@ void lv_port_disp_init(void)
     disp_drv.flush_cb = disp_flush;
 
     /*Set a display buffer*/
-    disp_drv.draw_buf = &draw_buf_dsc_1;
+    disp_drv.draw_buf = &draw_buf_dsc_2;
 
     /*Required for Example 3)*/
     // disp_drv.full_refresh = 1;
@@ -167,13 +167,20 @@ void disp_disable_update(void)
 static void disp_flush(lv_disp_drv_t * disp_drv, const lv_area_t * area, lv_color_t * color_p)
 {
     if(disp_flush_enabled) {
-        /*The most simple case (but also the slowest) to put all pixels to the screen one-by-one*/
-        // ILI9341_Show_Image(area->x1,area->y1,area->x2-area->x1+1,area->y2-area->y1+1,(uint8_t *)color_p);
+       while(Dma1_Ch3_IsBusy());
+        //开始更新另一个buffer的数据
+        lv_disp_flush_ready(disp_drv);
+        //设置当前buffer刷屏区域
+        LCD_Address_Set(area->x1, area->y1, area->x2, area->y2);
+        //使能屏幕
+        LCD_CS_Clr();
+        //DMA把buffer的数据发送给SPI
+        Dma1_Ch3_Config((uint32_t)color_p, (uint32_t)SPI1+0x0C, (2*(area->y2-area->y1+1)*(area->x2-area->x1+1)));
     }
 
     /*IMPORTANT!!!
      *Inform the graphics library that you are ready with the flushing*/
-    lv_disp_flush_ready(disp_drv);
+    // lv_disp_flush_ready(disp_drv);
 }
 
 /*OPTIONAL: GPU INTERFACE*/
