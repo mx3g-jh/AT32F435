@@ -167,15 +167,9 @@ void disp_disable_update(void)
 static void disp_flush(lv_disp_drv_t * disp_drv, const lv_area_t * area, lv_color_t * color_p)
 {
     if(disp_flush_enabled) {
-       while(Dma1_Ch3_IsBusy());
         //开始更新另一个buffer的数据
         lv_disp_flush_ready(disp_drv);
         //设置当前buffer刷屏区域
-        LCD_Address_Set(area->x1, area->y1, area->x2, area->y2);
-        //使能屏幕
-        LCD_CS_Clr();
-        //DMA把buffer的数据发送给SPI
-        Dma1_Ch3_Config((uint32_t)color_p, (uint32_t)SPI1+0x0C, (2*(area->y2-area->y1+1)*(area->x2-area->x1+1)));
     }
 
     /*IMPORTANT!!!

@@ -22,8 +22,6 @@ extern "C" {
 #else
 #include "lvgl/lvgl.h"
 #endif
-#include "lcd.h"
-#include "dma.h"
 /*********************
  *      DEFINES
  *********************/

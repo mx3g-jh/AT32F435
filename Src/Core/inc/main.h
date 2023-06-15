@@ -12,14 +12,10 @@ extern "C" {
 #include "at32f435_437_clock.h"
 
 //bsp
-#include "gpio.h"
-#include "spi.h"
-#include "dma.h"
 #include "timer.h"
 
 //hardware
-#include "lcd.h"
-
+#include "bsp_spi_lcd.h"
 //application
 #include "lvgl.h"
 #include "lv_port_disp.h"

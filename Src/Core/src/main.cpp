@@ -29,7 +29,10 @@
 #include "lv_port_disp.h"
 #include "lv_demos.h"
 #include "main.h"
-#include "st7789.h"
+
+#define BufferSize	240*240
+uint16_t Buffer_Tx[BufferSize];
+
 /** @addtogroup AT32F435_periph_examples
   * @{
   */
@@ -46,18 +49,14 @@ __IO uint32_t time_cnt = 0;
 int main(void)
 {
   system_clock_config();
-
+	nvic_priority_group_config(NVIC_PRIORITY_GROUP_4);
+  nvic_irq_enable(DMA1_Channel1_IRQn, 1, 0);
   at32_board_init();
   uart_print_init(115200);
-  Gpio_Init();
-  nvic_priority_group_config(NVIC_PRIORITY_GROUP_4);
-  Spi1_Init();
-  ST7789_Init();
 
-  // System_Timer_Init();
-    //hardware init
-  // LCD_Init();
-  // LCD_Fill(0,0,240,240,0x001F);
+  LCD_Init();
+  LCD_fill(0,0,240,240,YELLOW);
+
   // lv_init();
   // lv_port_disp_init();
   // lv_demo_benchmark();
@@ -65,20 +64,40 @@ int main(void)
   crm_clocks_freq_get(&clocks_struct);
   while(1)
   {
-    // delay_ms(500);
-    // LCD_BLK_Set();
-    delay_sec(1);
-    at32_led_toggle(LED2);
-    delay_ms(400);
-    ST7789_Test();
-    printf("flash id check success! id: %d %d %d %d\r\n", clocks_struct.ahb_freq,clocks_struct.apb1_freq,clocks_struct.apb2_freq,clocks_struct.sclk_freq);
 
-    // lv_task_handler();
-    // delay_ms(200);
-    // at32_led_toggle(LED3);
-    // delay_ms(200);
-    // at32_led_toggle(LED4);
-    // delay_ms(200);
+    at32_led_toggle(LED2);
+    printf("flash id check success! id: %d %d %d %d\r\n", clocks_struct.ahb_freq,clocks_struct.apb1_freq,clocks_struct.apb2_freq,clocks_struct.sclk_freq);
+		printf("doing\r\n");
+		for(int i = 0; i < BufferSize; i++)
+		{
+			Buffer_Tx[i] = RED;
+		}
+		LCD_DMA_Fill(0,0,240,240,Buffer_Tx);
+		delay_ms(100);
+		
+		printf("doing\r\n");
+		for(int i = 0; i < BufferSize; i++)
+		{
+			Buffer_Tx[i] = LIGHTBLUE;
+		}
+		LCD_DMA_Fill(0,0,240,240,Buffer_Tx);
+		delay_ms(100);
+
+		printf("doing\r\n");
+		for(int i = 0; i < BufferSize; i++)
+		{
+			Buffer_Tx[i] = LBBLUE;
+		}
+		LCD_DMA_Fill(0,0,240,240,Buffer_Tx);
+		delay_ms(100);
+
+		printf("doing\r\n");
+		for(int i = 0; i < BufferSize; i++)
+		{
+			Buffer_Tx[i] = WHITE;
+		}
+		LCD_DMA_Fill(0,0,240,240,Buffer_Tx);
+		delay_ms(100);	
   }
 }
 
