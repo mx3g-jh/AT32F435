@@ -21,6 +21,16 @@ extern "C" {
 #include "lv_port_disp.h"
 #include "lv_demos.h"
 
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
+#include "event_groups.h"
+#include "timers.h"
+#include "stream_buffer.h"
+#include "message_buffer.h"
+#include "semphr.h"
+#include "lv_tick_custom.h"
+
 void System_Init(void);
 
 #ifdef __cplusplus

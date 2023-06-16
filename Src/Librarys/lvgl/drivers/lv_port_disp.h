@@ -16,12 +16,16 @@ extern "C" {
 /*********************
  *      INCLUDES
  *********************/
-#define LV_LVGL_H_INCLUDE_SIMPLE
 #if defined(LV_LVGL_H_INCLUDE_SIMPLE)
 #include "lvgl.h"
 #else
-#include "lvgl/lvgl.h"
+#include "lvgl.h"
+#include "at32f435_437_board.h"
+//#include "at32_video_ev_spi.h"
+//#include "at32_video_ev_lcd.h"
+#include "at32f435_437.h"
 #endif
+
 /*********************
  *      DEFINES
  *********************/
@@ -36,13 +40,6 @@ extern "C" {
 /* Initialize low level display driver */
 void lv_port_disp_init(void);
 
-/* Enable updating the screen (the flushing process) when disp_flush() is called by LVGL
- */
-void disp_enable_update(void);
-
-/* Disable updating the screen (the flushing process) when disp_flush() is called by LVGL
- */
-void disp_disable_update(void);
 
 /**********************
  *      MACROS

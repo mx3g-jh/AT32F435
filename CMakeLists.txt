@@ -89,26 +89,6 @@ endforeach()
 
 add_definitions(#[[TODO insert definitions, ex. -DUSE_HAL_DRIVER -DCORE_CM4 -DDEBUG -DSTM32H745xx]])
 
-# include_directories(
-# 	${CMAKE_SOURCE_DIR}/Src/Drivers/st7789/inc
-# 	${CMAKE_SOURCE_DIR}/Src/Core/inc
-# 	${CMAKE_SOURCE_DIR}/Src/Drivers/st7789/inc
-# 	${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/drivers
-# 	${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/demos
-# 	${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/demos/widgets
-# 	${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/demos/music
-# 	${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/demos/benchmark
-# 	${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/demos/stress
-# 	${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl 
-# 	${AT_BSPACK_DIR}/libraries/drivers/inc
-# 	${AT_BSPACK_DIR}/libraries/cmsis/cm4/device_support
-# 	${AT_BSPACK_DIR}/libraries/cmsis/cm4/core_support
-# 	${AT_BSPACK_DIR}/project/at32f435_437_board
-# 	${middleware_headers} ##This might be bad - because I think we have conflicts.... but we can put it after the libs
-# 	${CMAKE_SOURCE_DIR}/Src/Core/inc
-# 	${CMAKE_SOURCE_DIR}/Src/App
-# )
-
 #AT32F BSP Libraries
 file(GLOB_RECURSE LIB_SOURCES
     "${AT_BSPACK_DIR}/libraries/drivers/src/*.*"
@@ -122,6 +102,30 @@ target_include_directories(at32f_lib PRIVATE
         ${AT_BSPACK_DIR}/libraries/cmsis/cm4/device_support
         ${AT_BSPACK_DIR}/libraries/cmsis/cm4/core_support
         )
+
+
+#FREE_RTOS Libraries
+set(FREE_RTOS_LIBS_SRC
+    ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/croutine.c
+    ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/tasks.c
+    ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/timers.c
+    ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/queue.c
+    ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/list.c
+    ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/event_groups.c
+    # ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/portable/GCC/ARM_CM3/port.c
+    ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/portable/GCC/ARM_CM4F/port.c
+    # ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/portable/memmang/heap_3.c
+    # ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/portable/memmang/heap_5.c
+    ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/portable/memmang/heap_4.c
+    # ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/portable/memmang/heap_2.c
+    # ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/portable/memmang/heap_1.c
+    # ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/portable/rvds/ARM_CM3/port.c
+    # ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/portable/rvds/ARM_CM4F/port.c
+    # ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/portable/IAR/ARM_CM3/port.c
+    # ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/portable/IAR/ARM_CM4F/port.c
+    ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/portable/common/mpu_wrappers.c
+    ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/stream_buffer.c
+    )
 
 #LVGL Libraries
 set(LVGL_LIBS_SRC
@@ -381,20 +385,10 @@ set(LVGL_LIBS_SRC
     ${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/drivers/lv_port_fs.c
 )
 
-# add_library(lvgl_lib OBJECT ${LVGL_LIBS_SRC})
-# include_directories(lvgl_lib PRIVATE
-# 		${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/drivers
-# 		${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/demos
-# 		${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/demos/widgets
-# 		${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/demos/music
-# 		${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/demos/benchmark
-# 		${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/demos/stress
-# 		${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl
-#         )
-
 #Middlewares for Examples
 file(GLOB_RECURSE MIDDLEWARES_SOURCES
 	"${AT_BSPACK_DIR}/middlewares/i2c_application_library/*.c"
+    "${AT_BSPACK_DIR}/middlewares/freertos/*.c"
 )
 list(FILTER MIDDLEWARES_SOURCES EXCLUDE REGEX ".*diskio.c$") #Remove the stub implementation
 foreach(MW ${MIDDLEWARES_SOURCES})
@@ -467,7 +461,8 @@ set(PROJECT
 		$<TARGET_OBJECTS:at32f_lib>
 		$<TARGET_OBJECTS:middlewares_lib>
 		${AT_BSPACK_DIR}/project/at32f435_437_board/at32f435_437_board.c
-		${LVGL_LIBS_SRC}		
+		${LVGL_LIBS_SRC}
+        # ${FREE_RTOS_LIBS_SRC}	
 		${CORE_SOURCES}
 		${APP_SOURCES}
 		${LINKER_SCRIPT}
@@ -489,6 +484,8 @@ set(PROJECT
 			${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/demos/benchmark
 			${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/demos/stress
 			${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl
+            # ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/include
+            # ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/portable/GCC/ARM_CM4F
 	)
 
 	if(${PROJECT} MATCHES "usb.*|acc.*")
