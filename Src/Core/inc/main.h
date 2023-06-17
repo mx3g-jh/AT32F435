@@ -13,7 +13,7 @@ extern "C" {
 
 //bsp
 #include "timer.h"
-
+#include "ui.h"
 //hardware
 #include "bsp_spi_lcd.h"
 //application

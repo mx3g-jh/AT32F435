@@ -104,27 +104,14 @@ target_include_directories(at32f_lib PRIVATE
         )
 
 
-#FREE_RTOS Libraries
-set(FREE_RTOS_LIBS_SRC
-    ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/croutine.c
-    ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/tasks.c
-    ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/timers.c
-    ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/queue.c
-    ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/list.c
-    ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/event_groups.c
-    # ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/portable/GCC/ARM_CM3/port.c
-    ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/portable/GCC/ARM_CM4F/port.c
-    # ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/portable/memmang/heap_3.c
-    # ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/portable/memmang/heap_5.c
-    ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/portable/memmang/heap_4.c
-    # ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/portable/memmang/heap_2.c
-    # ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/portable/memmang/heap_1.c
-    # ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/portable/rvds/ARM_CM3/port.c
-    # ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/portable/rvds/ARM_CM4F/port.c
-    # ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/portable/IAR/ARM_CM3/port.c
-    # ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/portable/IAR/ARM_CM4F/port.c
-    ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/portable/common/mpu_wrappers.c
-    ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/stream_buffer.c
+#FREE_RTOS_UI Libraries
+set(FREE_RTOS_UI_LIBS_SRC
+    ${CMAKE_SOURCE_DIR}/Src/Librarys/lv_ui/ui_helpers.c
+    ${CMAKE_SOURCE_DIR}/Src/Librarys/lv_ui/img/ui_img_back_png.c
+    ${CMAKE_SOURCE_DIR}/Src/Librarys/lv_ui/img/ui_img_takepic_png.c
+    ${CMAKE_SOURCE_DIR}/Src/Librarys/lv_ui/img/ui_img_weather_png.c
+    ${CMAKE_SOURCE_DIR}/Src/Librarys/lv_ui/img/ui_img_image_png.c
+    ${CMAKE_SOURCE_DIR}/Src/Librarys/lv_ui/ui.c
     )
 
 #LVGL Libraries
@@ -462,7 +449,7 @@ set(PROJECT
 		$<TARGET_OBJECTS:middlewares_lib>
 		${AT_BSPACK_DIR}/project/at32f435_437_board/at32f435_437_board.c
 		${LVGL_LIBS_SRC}
-        # ${FREE_RTOS_LIBS_SRC}	
+        ${FREE_RTOS_UI_LIBS_SRC}
 		${CORE_SOURCES}
 		${APP_SOURCES}
 		${LINKER_SCRIPT}
@@ -484,8 +471,8 @@ set(PROJECT
 			${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/demos/benchmark
 			${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/demos/stress
 			${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl
-            # ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/include
-            # ${CMAKE_SOURCE_DIR}/Src/Librarys/freertos/source/portable/GCC/ARM_CM4F
+            ${CMAKE_SOURCE_DIR}/Src/Librarys/lv_ui/inc
+
 	)
 
 	if(${PROJECT} MATCHES "usb.*|acc.*")

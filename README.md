@@ -1,4 +1,4 @@
-# AT32f435
+# AT32F435
 ## Introduction
 CMake ARM gnu toolchain wrappers for AT32F435 SDK from [Artery Tek](https://www.arterychip.com/download/BSP/AT32F435_437_Firmware_Library_V2.1.2.zip) (in their words the Board Support Package (BSP))
 

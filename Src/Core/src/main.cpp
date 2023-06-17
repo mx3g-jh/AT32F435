@@ -41,11 +41,11 @@ uint16_t Buffer_Tx[BufferSize];
   * @{
   */
 
-TaskHandle_t Led_blink_Handler;
+TaskHandle_t Debug_print_Handler;
 TaskHandle_t Lvgl_task_Handler;
 TaskHandle_t Lvgl_display_Handler;
 
-void Led_blink(void *pvParameters)
+void Debug_print(void *pvParameters)
 {
 
 	crm_clocks_freq_type Get_Clocks;
@@ -86,10 +86,24 @@ void Lvgl_display_task(void *pvParameters)
   lv_init();
   lv_ms_tick_tim();
   lv_port_disp_init();
-  lv_demo_benchmark();
+  ui_init();
+  // lv_demo_benchmark();
   while (1)
   {
-    vTaskDelay(100);
+    vTaskDelay(2000);
+    lv_event_send(ui_ImgButton1, LV_EVENT_CLICKED, NULL);
+    vTaskDelay(2000);
+    lv_event_send(ui_ImgButton6, LV_EVENT_CLICKED, NULL);
+    vTaskDelay(2000);
+    lv_event_send(ui_ImgButton2, LV_EVENT_CLICKED, NULL);
+    vTaskDelay(2000);
+    lv_event_send(ui_ImgButton5, LV_EVENT_CLICKED, NULL);
+    vTaskDelay(2000);
+    lv_event_send(ui_ImgButton3, LV_EVENT_CLICKED, NULL);
+    vTaskDelay(2000);
+    lv_event_send(ui_ImgButton4, LV_EVENT_CLICKED, NULL);
+    vTaskDelay(2000);
+    // vTaskDelay(100);
   }
 }
 
@@ -112,12 +126,12 @@ int main(void)
   LCD_Init();
 
 	taskENTER_CRITICAL();
-	xTaskCreate((TaskFunction_t)Led_blink,
-				(const char *)"Led_blink",
+	xTaskCreate((TaskFunction_t)Debug_print,
+				(const char *)"Debug_print",
 				(uint16_t)1024,
 				(void *)NULL,
 				(UBaseType_t)1,
-				(TaskHandle_t *)&Led_blink_Handler);
+				(TaskHandle_t *)&Debug_print_Handler);
   
   xTaskCreate((TaskFunction_t)Lvgl_task,
             (const char *)"lvgl_task",
