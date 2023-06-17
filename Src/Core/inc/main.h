@@ -21,6 +21,7 @@ extern "C" {
 #include "lv_port_disp.h"
 #include "lv_demos.h"
 
+//middleware
 #include "FreeRTOS.h"
 #include "task.h"
 #include "queue.h"

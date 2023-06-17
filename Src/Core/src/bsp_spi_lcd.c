@@ -207,6 +207,7 @@ void LCD_Init(void)
 	LCD_WR_REG(0x21);
 	LCD_WR_REG(0x11);
 	LCD_WR_REG(0x29);
+  	LCD_fill(0,0,240,240,BLACK);
 } 
 
 void LCD_fill(u16 xsta,u16 ysta,u16 xend,u16 yend,u16 color)
