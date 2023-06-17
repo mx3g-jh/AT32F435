@@ -11,7 +11,7 @@
 #include <stdbool.h>
 #include "bsp_spi_lcd.h"
 
-#define ONE_FLUSH_SIZES    40
+#define ONE_FLUSH_SIZES    80
 #define MY_DISP_HOR_RES    240
 #define MY_DISP_VER_RES    240
 

@@ -48,6 +48,32 @@ void LCD_GPIO_Init(void)
 
 }
 
+/**
+ * @brief Set the rotation direction of the display
+ * @param m -> rotation parameter(please refer it in st7789.h)
+ * @return none
+ */
+void ST7789_SetRotation(u8 m)
+{
+	LCD_WR_REG(ST7789_MADCTL);	// MADCTL
+	switch (m) {
+	case 0:
+		LCD_WR_DATA8(ST7789_MADCTL_MX | ST7789_MADCTL_MY | ST7789_MADCTL_RGB);
+		break;
+	case 1:
+		LCD_WR_DATA8(ST7789_MADCTL_MY | ST7789_MADCTL_MV | ST7789_MADCTL_RGB);
+		break;
+	case 2:
+		LCD_WR_DATA8(ST7789_MADCTL_RGB);
+		break;
+	case 3:
+		LCD_WR_DATA8(ST7789_MADCTL_MX | ST7789_MADCTL_MV | ST7789_MADCTL_RGB);
+		break;
+	default:
+		break;
+	}
+}
+
 void LCD_Writ_Bus(u8 dat) 
 {	
   LCD_CS_Clr();
@@ -78,12 +104,18 @@ void LCD_WR_REG(u8 dat)
 
 void LCD_Address_Set(u16 x1,u16 y1,u16 x2,u16 y2)
 {
-	LCD_WR_REG(0x2a);//列地址设置
-	LCD_WR_DATA(x1);
-	LCD_WR_DATA(x2);
-	LCD_WR_REG(0x2b);//行地址设置
-	LCD_WR_DATA(y1);
-	LCD_WR_DATA(y2);
+	uint16_t x_start = x1 + X_SHIFT, x_end = x2 + X_SHIFT;
+	uint16_t y_start = y1 + Y_SHIFT, y_end = y2 + Y_SHIFT;
+	
+	/* Column Address set */
+	LCD_WR_REG(ST7789_CASET); 
+	LCD_WR_DATA(x_start);
+	LCD_WR_DATA(x_end);
+	/* Row Address set */
+	LCD_WR_REG(ST7789_RASET);
+	LCD_WR_DATA(y_start);
+	LCD_WR_DATA(y_end);
+
 	LCD_WR_REG(0x2c);//储存器写
 }
 
@@ -114,6 +146,8 @@ void LCD_Init(void)
 	LCD_WR_DATA8(0x00); 
 	LCD_WR_DATA8(0x33); 
 	LCD_WR_DATA8(0x33); 			
+
+	ST7789_SetRotation(ST7789_ROTATION);	//	MADCTL (Display Rotation)
 
 	LCD_WR_REG(0xB7);			
 	LCD_WR_DATA8(0x35);

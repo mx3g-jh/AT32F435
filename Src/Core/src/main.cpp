@@ -50,14 +50,14 @@ void App_main(void *pvParameters)
   // lv_init();
   // lv_port_disp_init();
   // lv_demo_benchmark();
-	crm_clocks_freq_type Get_Clocks;
-	crm_clocks_freq_get(&Get_Clocks);
-	printf("System Clock information\r\n");
-	printf("SYSCLK_Frequency = %d\r\n", (uint32_t)Get_Clocks.sclk_freq);
-	printf("HCLK_Frequency   = %d\r\n", (uint32_t)Get_Clocks.ahb_freq);
-	printf("PCLK1_Frequency  = %d\r\n", (uint32_t)Get_Clocks.apb1_freq);
-	printf("PCLK2_Frequency  = %d\r\n", (uint32_t)Get_Clocks.apb2_freq);
-	u8 task_buff[128];
+	// crm_clocks_freq_type Get_Clocks;
+	// crm_clocks_freq_get(&Get_Clocks);
+	// printf("System Clock information\r\n");
+	// printf("SYSCLK_Frequency = %d\r\n", (uint32_t)Get_Clocks.sclk_freq);
+	// printf("HCLK_Frequency   = %d\r\n", (uint32_t)Get_Clocks.ahb_freq);
+	// printf("PCLK1_Frequency  = %d\r\n", (uint32_t)Get_Clocks.apb1_freq);
+	// printf("PCLK2_Frequency  = %d\r\n", (uint32_t)Get_Clocks.apb2_freq);
+	// u8 task_buff[128];
 	while (1)
 	{
 		// printf("====================Task===================\r\n");
