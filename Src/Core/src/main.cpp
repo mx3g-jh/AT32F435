@@ -32,7 +32,7 @@
 
 #define BufferSize	240*240
 uint16_t Buffer_Tx[BufferSize];
-
+lv_ui guider_ui;
 /** @addtogroup AT32F435_periph_examples
   * @{
   */
@@ -83,25 +83,28 @@ void Lvgl_task(void *pvParameters)
 
 void Lvgl_display_task(void *pvParameters)
 {
+
   lv_init();
   lv_ms_tick_tim();
   lv_port_disp_init();
-  ui_init();
+  setup_ui(&guider_ui);
+  events_init(&guider_ui);
+  // ui_init();
   // lv_demo_benchmark();
   while (1)
   {
-    vTaskDelay(2000);
-    lv_event_send(ui_ImgButton1, LV_EVENT_CLICKED, NULL);
-    vTaskDelay(2000);
-    lv_event_send(ui_ImgButton6, LV_EVENT_CLICKED, NULL);
-    vTaskDelay(2000);
-    lv_event_send(ui_ImgButton2, LV_EVENT_CLICKED, NULL);
-    vTaskDelay(2000);
-    lv_event_send(ui_ImgButton5, LV_EVENT_CLICKED, NULL);
-    vTaskDelay(2000);
-    lv_event_send(ui_ImgButton3, LV_EVENT_CLICKED, NULL);
-    vTaskDelay(2000);
-    lv_event_send(ui_ImgButton4, LV_EVENT_CLICKED, NULL);
+    // vTaskDelay(2000);
+    // lv_event_send(ui_ImgButton1, LV_EVENT_CLICKED, NULL);
+    // vTaskDelay(2000);
+    // lv_event_send(ui_ImgButton6, LV_EVENT_CLICKED, NULL);
+    // vTaskDelay(2000);
+    // lv_event_send(ui_ImgButton2, LV_EVENT_CLICKED, NULL);
+    // vTaskDelay(2000);
+    // lv_event_send(ui_ImgButton5, LV_EVENT_CLICKED, NULL);
+    // vTaskDelay(2000);
+    // lv_event_send(ui_ImgButton3, LV_EVENT_CLICKED, NULL);
+    // vTaskDelay(2000);
+    // lv_event_send(ui_ImgButton4, LV_EVENT_CLICKED, NULL);
     vTaskDelay(2000);
     // vTaskDelay(100);
   }

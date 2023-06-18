@@ -103,6 +103,56 @@ target_include_directories(at32f_lib PRIVATE
         ${AT_BSPACK_DIR}/libraries/cmsis/cm4/core_support
         )
 
+#FREE_RTOS_TEST Libraries
+set(FREE_RTOS_TEST_LIBS_SRC
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/setup_scr_copyhome.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/guider_fonts/lv_font_arial_10.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/guider_fonts/lv_font_simsun_18.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/guider_fonts/lv_font_simsun_10.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/guider_fonts/lv_font_montserratMedium_12.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/setup_scr_prtusb.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/setup_scr_printit.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/setup_scr_saved.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/events_init.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_btn_bg_1_alpha_42x88.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_btn3_alpha_42x88.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_ready_alpha_50x50.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_scan_alpha_14x14.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_internet_alpha_15x15.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_cloud_alpha_27x35.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_setup_alpha_14x14.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_btn2_alpha_57x123.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_btn4_alpha_42x88.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_phone_alpha_22x48.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_example_alpha_150x151.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_tel_alpha_10x10.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_printer2_alpha_30x48.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_wifi_alpha_14x16.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_btn4_alpha_57x123.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_btn3_alpha_57x123.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_eco_alpha_10x10.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_wave_alpha_12x12.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_btn2_alpha_42x88.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_hue_alpha_10x10.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_bright_alpha_12x12.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_pc_alpha_10x10.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_copy_alpha_14x14.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_no_internet_alpha_12x12.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_mobile_alpha_15x15.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_example_alpha_125x120.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_print_alpha_14x14.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_usb_alpha_15x15.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/setup_scr_loader.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/setup_scr_prthome.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/setup_scr_prtmb.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/setup_scr_setup.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/gui_guider.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/setup_scr_home.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/setup_scr_scanhome.c
+        ${CMAKE_SOURCE_DIR}/Src/App/generated/setup_scr_copynext.c
+        ${CMAKE_SOURCE_DIR}/Src/App/custom/custom.c
+        ${CMAKE_SOURCE_DIR}/Src/App/dclock/lv_dclock.c
+    )
 
 #FREE_RTOS_UI Libraries
 set(FREE_RTOS_UI_LIBS_SRC
@@ -441,7 +491,7 @@ set(PROJECT
 	string(REPLACE "/" "-" PROJECT_NAME ${PROJECT})
 	message( "Include PROJECT " ${PROJECT} " in build as " ${PROJECT_NAME})
 	file(GLOB_RECURSE CORE_SOURCES "${CMAKE_SOURCE_DIR}/Src/Core/src/*.*")
-	file(GLOB_RECURSE APP_SOURCES "${CMAKE_SOURCE_DIR}/Src/App/*.c" "${CMAKE_SOURCE_DIR}/Src/App/*.cpp")
+	# file(GLOB_RECURSE APP_SOURCES "${CMAKE_SOURCE_DIR}/Src/App/*.c" "${CMAKE_SOURCE_DIR}/Src/App/*.cpp")
 
 	set(TARGET ${PROJECT_NAME}.elf)
 	add_executable(${TARGET} 
@@ -450,6 +500,7 @@ set(PROJECT
 		${AT_BSPACK_DIR}/project/at32f435_437_board/at32f435_437_board.c
 		${LVGL_LIBS_SRC}
         ${FREE_RTOS_UI_LIBS_SRC}
+        ${FREE_RTOS_TEST_LIBS_SRC}
 		${CORE_SOURCES}
 		${APP_SOURCES}
 		${LINKER_SCRIPT}
@@ -471,7 +522,18 @@ set(PROJECT
 			${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/demos/benchmark
 			${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/demos/stress
 			${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl
+            ${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/src
+            ${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/src/font
+            ${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/src/core
+            ${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/src/widgets
+            ${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/src/misc
+            ${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/src/draw
             ${CMAKE_SOURCE_DIR}/Src/Librarys/lv_ui/inc
+            ${CMAKE_SOURCE_DIR}/Src/App/generated
+            ${CMAKE_SOURCE_DIR}/Src/App/generated/guider_fonts
+            ${CMAKE_SOURCE_DIR}/Src/App/generated/guider_customer_fonts
+            ${CMAKE_SOURCE_DIR}/Src/App/dclock
+            ${CMAKE_SOURCE_DIR}/Src/App/custom
 
 	)
 

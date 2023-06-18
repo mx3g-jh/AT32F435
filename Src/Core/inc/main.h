@@ -21,6 +21,8 @@ extern "C" {
 #include "lv_port_disp.h"
 #include "lv_demos.h"
 
+#include "events_init.h"
+#include "gui_guider.h"
 //middleware
 #include "FreeRTOS.h"
 #include "task.h"
