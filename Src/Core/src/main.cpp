@@ -67,7 +67,7 @@ void Debug_print(void *pvParameters)
 	  printf("PCLK2_Frequency  = %d\r\n", (uint32_t)Get_Clocks.apb2_freq);
     printf("systemcoreclock  = %d\r\n", (uint32_t)SystemCoreClock);
     at32_led_toggle(LED2);
-		vTaskDelay(1000);
+		vTaskDelay(500);
 	}
 }
 
