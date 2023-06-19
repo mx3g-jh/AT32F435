@@ -23,15 +23,8 @@
   */
 
 /* includes */
-#include "at32f435_437_board.h"
-#include "at32f435_437_clock.h"
-#include "lvgl.h"
-#include "lv_port_disp.h"
-#include "lv_demos.h"
 #include "main.h"
-
-#define BufferSize	240*240
-uint16_t Buffer_Tx[BufferSize];
+#include "ili9341_touch.h"
 lv_ui guider_ui;
 /** @addtogroup AT32F435_periph_examples
   * @{
@@ -87,13 +80,22 @@ void Lvgl_display_task(void *pvParameters)
   lv_init();
   lv_ms_tick_tim();
   lv_port_disp_init();
-  setup_ui(&guider_ui);
-  events_init(&guider_ui);
+  lv_port_indev_init();
+  // setup_ui(&guider_ui);
+  // events_init(&guider_ui);
   // ui_init();
-  // lv_demo_benchmark();
+  lv_demo_benchmark();
+  // lv_demo_widgets();
+  uint16_t *x;
+  uint16_t *y;
   while (1)
   {
-    // vTaskDelay(2000);
+    // printf("touchpad\r\n");
+    if(ILI9341_TouchPressed()){
+        printf("touchpad_get_xy = %d %d\r\n", x,y);
+    }
+
+    vTaskDelay(100);
     // lv_event_send(ui_ImgButton1, LV_EVENT_CLICKED, NULL);
     // vTaskDelay(2000);
     // lv_event_send(ui_ImgButton6, LV_EVENT_CLICKED, NULL);
@@ -105,7 +107,7 @@ void Lvgl_display_task(void *pvParameters)
     // lv_event_send(ui_ImgButton3, LV_EVENT_CLICKED, NULL);
     // vTaskDelay(2000);
     // lv_event_send(ui_ImgButton4, LV_EVENT_CLICKED, NULL);
-    vTaskDelay(2000);
+    // vTaskDelay(2000);
     // vTaskDelay(100);
   }
 }
@@ -126,8 +128,12 @@ int main(void)
   at32_board_init();
   uart_print_init(115200);
 
-  LCD_Init();
-
+  // LCD_Init();
+  ILI9341_GPIO_Init();
+  TFT_ILI9341_Init();
+  ILI9341_Touch_GPIO_Init();
+  // delay_ms(200);
+  // ILI9341_FillScreen(ILI9341_BLACK);
 	taskENTER_CRITICAL();
 	xTaskCreate((TaskFunction_t)Debug_print,
 				(const char *)"Debug_print",

@@ -491,7 +491,7 @@ set(PROJECT
 	string(REPLACE "/" "-" PROJECT_NAME ${PROJECT})
 	message( "Include PROJECT " ${PROJECT} " in build as " ${PROJECT_NAME})
 	file(GLOB_RECURSE CORE_SOURCES "${CMAKE_SOURCE_DIR}/Src/Core/src/*.*")
-	# file(GLOB_RECURSE APP_SOURCES "${CMAKE_SOURCE_DIR}/Src/App/*.c" "${CMAKE_SOURCE_DIR}/Src/App/*.cpp")
+	file(GLOB_RECURSE DRIVERS_SOURCES "${CMAKE_SOURCE_DIR}/Src/Drivers/*.c" "${CMAKE_SOURCE_DIR}/Src/Drivers/*.cpp")
 
 	set(TARGET ${PROJECT_NAME}.elf)
 	add_executable(${TARGET} 
@@ -502,7 +502,7 @@ set(PROJECT
         ${FREE_RTOS_UI_LIBS_SRC}
         ${FREE_RTOS_TEST_LIBS_SRC}
 		${CORE_SOURCES}
-		${APP_SOURCES}
+		${DRIVERS_SOURCES}
 		${LINKER_SCRIPT}
 	)
 	# target_link_libraries(${TARGET} PUBLIC lvgl_lib)
@@ -529,6 +529,7 @@ set(PROJECT
             ${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/src/misc
             ${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/src/draw
             ${CMAKE_SOURCE_DIR}/Src/Librarys/lv_ui/inc
+            ${CMAKE_SOURCE_DIR}/Src/Drivers/ili9341
             ${CMAKE_SOURCE_DIR}/Src/App/generated
             ${CMAKE_SOURCE_DIR}/Src/App/generated/guider_fonts
             ${CMAKE_SOURCE_DIR}/Src/App/generated/guider_customer_fonts

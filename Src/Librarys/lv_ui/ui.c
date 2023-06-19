@@ -31,6 +31,7 @@ lv_obj_t *ui_Switch1;
 lv_obj_t *ui_Spinner1;
 void ui_event_ImgButton4(lv_event_t *e);
 lv_obj_t *ui_ImgButton4;
+lv_obj_t *ui_ImgButton5;
 lv_obj_t *ui____initial_actions0;
 
 ///////////////////// TEST LVGL SETTINGS ////////////////////
@@ -194,7 +195,7 @@ void ui_Screen4_screen_init(void)
     lv_obj_set_x(ui_Label2, 54);
     lv_obj_set_y(ui_Label2, -21);
     lv_obj_set_align(ui_Label2, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_Label2, "hello world");
+    lv_label_set_text(ui_Label2, "YUNEEC");
 
     ui_Checkbox1 = lv_checkbox_create(ui_Screen4);
     lv_obj_set_width(ui_Checkbox1, LV_SIZE_CONTENT);  /// 1
@@ -203,9 +204,10 @@ void ui_Screen4_screen_init(void)
     lv_obj_set_y(ui_Checkbox1, 12);
     lv_obj_set_align(ui_Checkbox1, LV_ALIGN_CENTER);
     lv_obj_add_flag(ui_Checkbox1, LV_OBJ_FLAG_SCROLL_ON_FOCUS); /// Flags
+    lv_checkbox_set_text(ui_Checkbox1,"yuneec");
 
     ui_Roller1 = lv_roller_create(ui_Screen4);
-    lv_roller_set_options(ui_Roller1, "Option 1\nOption 2\nOption 3", LV_ROLLER_MODE_NORMAL);
+    lv_roller_set_options(ui_Roller1, "H520e \nH850 \nH820 ", LV_ROLLER_MODE_NORMAL);
     lv_obj_set_height(ui_Roller1, 153);
     lv_obj_set_width(ui_Roller1, LV_SIZE_CONTENT); /// 1
     lv_obj_set_x(ui_Roller1, -71);
@@ -228,12 +230,20 @@ void ui_Screen4_screen_init(void)
     lv_obj_clear_flag(ui_Spinner1, LV_OBJ_FLAG_CLICKABLE); /// Flags
 
     ui_ImgButton4 = lv_imgbtn_create(ui_Screen4);
-    lv_imgbtn_set_src(ui_ImgButton4, LV_IMGBTN_STATE_RELEASED, NULL, &ui_img_back_png, NULL);
+    lv_imgbtn_set_src(ui_ImgButton4, LV_IMGBTN_STATE_RELEASED, NULL, &ui_img_image_png, NULL);
     lv_obj_set_height(ui_ImgButton4, lv_pct(40));
     lv_obj_set_width(ui_ImgButton4, LV_SIZE_CONTENT); /// 1
     lv_obj_set_x(ui_ImgButton4, -2);
     lv_obj_set_y(ui_ImgButton4, -80);
     lv_obj_set_align(ui_ImgButton4, LV_ALIGN_CENTER);
+
+    ui_ImgButton5 = lv_imgbtn_create(ui_Screen4);
+    lv_imgbtn_set_src(ui_ImgButton5, LV_IMGBTN_STATE_RELEASED, NULL, &ui_img_back_png, NULL);
+    lv_obj_set_height(ui_ImgButton5, lv_pct(40));
+    lv_obj_set_width(ui_ImgButton5, LV_SIZE_CONTENT); /// 1
+    lv_obj_set_x(ui_ImgButton5, 80);
+    lv_obj_set_y(ui_ImgButton5, -80);
+    lv_obj_set_align(ui_ImgButton5, LV_ALIGN_CENTER);
 
     lv_obj_add_event_cb(ui_ImgButton4, ui_event_ImgButton4, LV_EVENT_ALL, NULL);
 }
@@ -248,5 +258,5 @@ void ui_init(void)
     ui_Screen3_screen_init();
     ui_Screen4_screen_init();
     ui____initial_actions0 = lv_obj_create(NULL);
-    lv_disp_load_scr(ui_Screen1);
+    lv_disp_load_scr(ui_Screen4);
 }

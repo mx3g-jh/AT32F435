@@ -16,9 +16,11 @@ extern "C" {
 #include "ui.h"
 //hardware
 #include "bsp_spi_lcd.h"
+#include "ili9341.h"
 //application
 #include "lvgl.h"
 #include "lv_port_disp.h"
+#include "lv_port_indev.h"
 #include "lv_demos.h"
 
 #include "events_init.h"
@@ -33,6 +35,8 @@ extern "C" {
 #include "message_buffer.h"
 #include "semphr.h"
 #include "lv_tick_custom.h"
+
+
 
 void System_Init(void);
 

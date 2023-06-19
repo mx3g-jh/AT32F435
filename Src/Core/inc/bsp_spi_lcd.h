@@ -94,14 +94,16 @@
 /* RGB/BGR Order ('0' = RGB, '1' = BGR) */
 #define ST7789_MADCTL_RGB 0x00
 
-#define LCD_RES_Clr()  gpio_bits_reset(GPIOA,GPIO_PINS_6)//RES
-#define LCD_RES_Set()  gpio_bits_set(GPIOA,GPIO_PINS_6)
+#define LCD_RES_Clr()  gpio_bits_reset(GPIOA,GPIO_PINS_3)//RES
+#define LCD_RES_Set()  gpio_bits_set(GPIOA,GPIO_PINS_3)
 #define LCD_DC_Clr()   gpio_bits_reset(GPIOA,GPIO_PINS_4)//DC
 #define LCD_DC_Set()   gpio_bits_set(GPIOA,GPIO_PINS_4) 
 #define LCD_CS_Clr()   gpio_bits_reset(GPIOB,GPIO_PINS_0)//CS
 #define LCD_CS_Set()   gpio_bits_set(GPIOB,GPIO_PINS_0)
 #define LCD_BLK_Clr()  gpio_bits_reset(GPIOB,GPIO_PINS_1)//BLK
 #define LCD_BLK_Set()  gpio_bits_set(GPIOB,GPIO_PINS_1)
+#define LCD_TOUCH_Clr()  gpio_bits_reset(GPIOB,GPIO_PINS_2)//Touch_CS
+#define LCD_TOUCH_Set()  gpio_bits_set(GPIOB,GPIO_PINS_2)
 
 void LCD_GPIO_Init(void);//≥ı ºªØGPIO
 

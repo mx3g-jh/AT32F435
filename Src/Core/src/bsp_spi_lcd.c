@@ -15,7 +15,7 @@ void LCD_GPIO_Init(void)
 	gpio_init(GPIOA, &gpio_initstructure);
 
 	gpio_initstructure.gpio_mode           = GPIO_MODE_OUTPUT;
-	gpio_initstructure.gpio_pins           = GPIO_PINS_6 | GPIO_PINS_4; 
+	gpio_initstructure.gpio_pins           = GPIO_PINS_3 | GPIO_PINS_4; 
 	gpio_init(GPIOA, &gpio_initstructure);
 	gpio_initstructure.gpio_pins           = GPIO_PINS_0 | GPIO_PINS_1; 
 	gpio_init(GPIOB, &gpio_initstructure);   
@@ -266,12 +266,12 @@ void LCD_DMA_Fill(u16 xsta,u16 ysta,u16 xend,u16 yend,u16 *color)
 	dmamux_enable(DMA1, TRUE);
   	dmamux_init(DMA1MUX_CHANNEL1, DMAMUX_DMAREQ_ID_SPI1_TX);
 	
-	gpio_bits_reset(GPIOA, GPIO_PINS_4); //CS=0	
+	LCD_CS_Clr(); //CS=0	
 	dma_channel_enable(DMA1_CHANNEL1, TRUE); //启动传输	
 	
 	while(!dma_flag_get(DMA1_FDT1_FLAG));
 	dma_channel_enable(DMA1_CHANNEL1, FALSE); //启动传输	
-	gpio_bits_set(GPIOA, GPIO_PINS_4); //CS=1
+	LCD_CS_Set(); //CS=1
 }
 
 

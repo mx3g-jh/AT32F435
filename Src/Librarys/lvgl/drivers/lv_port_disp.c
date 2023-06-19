@@ -10,10 +10,11 @@
 #include "lv_port_disp.h"
 #include <stdbool.h>
 #include "bsp_spi_lcd.h"
+#include "ili9341.h"
 
 #define ONE_FLUSH_SIZES    80
-#define MY_DISP_HOR_RES    240
-#define MY_DISP_VER_RES    240
+#define MY_DISP_HOR_RES    ILI9341_WIDTH
+#define MY_DISP_VER_RES    ILI9341_HEIGHT
 
 static lv_color_t buf_2_1[MY_DISP_HOR_RES * ONE_FLUSH_SIZES];                       
 static lv_color_t buf_2_2[MY_DISP_HOR_RES * ONE_FLUSH_SIZES];  
@@ -37,6 +38,28 @@ static void disp_flush(lv_disp_drv_t * disp_drv, const lv_area_t * area, lv_colo
 	while(spi_i2s_flag_get(SPI1, SPI_I2S_BF_FLAG) == SET); 
 	
 	LCD_CS_Set(); //CS=1
+	
+	lv_disp_flush_ready(disp_drv);
+}
+
+static void disp_flush_ili9341(lv_disp_drv_t * disp_drv, const lv_area_t * area, lv_color_t * color_p)
+{
+	u32 size = (area->x2 - area->x1+1)*(area->y2 - area->y1+1);
+
+	ILI9341_SetAddressWindow(area->x1,area->y1,area->x2,area->y2);
+
+	spi_frame_bit_num_set(SPI1, SPI_FRAME_16BIT);
+	ILI9341_CS_Clr(); //CS=0	
+	
+	dma_channel_enable(DMA1_CHANNEL1, FALSE);
+	DMA1_CHANNEL1->maddr  = (uint32_t)color_p;
+	DMA1_CHANNEL1->dtcnt = size;
+	dma_channel_enable(DMA1_CHANNEL1, TRUE);
+	
+	while(!dma_flag_get(DMA1_FDT1_FLAG));
+	while(spi_i2s_flag_get(SPI1, SPI_I2S_BF_FLAG) == SET); 
+	
+	ILI9341_CS_Set(); //CS=1
 	
 	lv_disp_flush_ready(disp_drv);
 }
@@ -74,7 +97,7 @@ void lv_port_disp_init(void)
     disp_drv.hor_res = MY_DISP_HOR_RES;
     disp_drv.ver_res = MY_DISP_VER_RES;
 	
-    disp_drv.flush_cb = disp_flush;
+    disp_drv.flush_cb = disp_flush_ili9341;
     disp_drv.draw_buf = &draw_buf_dsc_2;
 
     lv_disp_drv_register(&disp_drv);
