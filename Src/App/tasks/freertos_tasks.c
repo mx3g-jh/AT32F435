@@ -25,16 +25,24 @@ TaskHandle_t Debug_print_Handler;
 TaskHandle_t Lvgl_task_Handler;
 TaskHandle_t Lvgl_display_Handler;
 TaskHandle_t GT911_touch_Handler;
-
+TaskHandle_t Led_toggle_Handler;
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 void FreeRTOS_Init(void)
 {
 	taskENTER_CRITICAL();
+
+  xTaskCreate((TaskFunction_t)Led_toggle,
+            (const char *)"Led_toggle",
+            (uint16_t)64,
+            (void *)NULL,
+            (UBaseType_t)1,
+            (TaskHandle_t *)&Led_toggle_Handler);
+
 	xTaskCreate((TaskFunction_t)Debug_print,
 				(const char *)"Debug_print",
-				(uint16_t)1024,
+				(uint16_t)1560,
 				(void *)NULL,
 				(UBaseType_t)1,
 				(TaskHandle_t *)&Debug_print_Handler);
@@ -55,7 +63,7 @@ void FreeRTOS_Init(void)
 
   xTaskCreate((TaskFunction_t)GT911_touch_task,
             (const char *)"GT911_touch_task",
-            (uint16_t)1024,
+            (uint16_t)256,
             (void *)NULL,
             (UBaseType_t)1,
             (TaskHandle_t *)&GT911_touch_Handler);

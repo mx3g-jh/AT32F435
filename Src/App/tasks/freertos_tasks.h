@@ -10,6 +10,7 @@ void Debug_print(void *pvParameters);
 void Lvgl_task(void *pvParameters);
 void Lvgl_display_task(void *pvParameters);
 void GT911_touch_task(void *pvParameters);
+void Led_toggle(void *pvParameters);
 
 void FreeRTOS_Init(void);
 

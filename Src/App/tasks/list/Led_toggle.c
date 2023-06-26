@@ -21,26 +21,12 @@
 #include "main.h"
 #include "freertos_tasks.h"
 
-void Debug_print(void *pvParameters)
+void Led_toggle(void *pvParameters)
 {
-
-	crm_clocks_freq_type Get_Clocks;
-
-	u8 task_buff[256];
 	while (1)
 	{
-    vTaskDelay(1000);
-		printf("====================Task===================\r\n");
-		printf("  name       state     pri     stack    num\r\n");
-		vTaskList((char *)task_buff);
-		printf("%s", task_buff);
-		printf("===========================================\r\n");
-    crm_clocks_freq_get(&Get_Clocks);
-    printf("SYSCLK_Frequency = %d\r\n", (uint32_t)Get_Clocks.sclk_freq);
-	  printf("HCLK_Frequency   = %d\r\n", (uint32_t)Get_Clocks.ahb_freq);
-	  printf("PCLK1_Frequency  = %d\r\n", (uint32_t)Get_Clocks.apb1_freq);
-	  printf("PCLK2_Frequency  = %d\r\n", (uint32_t)Get_Clocks.apb2_freq);
-    printf("systemcoreclock  = %d\r\n", (uint32_t)SystemCoreClock);
-		vTaskDelay(1000);
+    vTaskDelay(10);
+    at32_led_toggle(LED2);
+		vTaskDelay(10);
 	}
 }

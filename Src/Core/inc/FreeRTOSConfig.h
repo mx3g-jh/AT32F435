@@ -116,27 +116,27 @@
 #define configCPU_CLOCK_HZ			( ( unsigned long ) systemcoreclock )	
 #define configTICK_RATE_HZ			( ( TickType_t ) 1000 )
 #define configMAX_PRIORITIES		( 32 )
-#define configMINIMAL_STACK_SIZE	( ( unsigned short ) 128 )
+#define configMINIMAL_STACK_SIZE	( ( unsigned short ) 64 )
 #define configSUPPORT_DYNAMIC_ALLOCATION        1       
 #define configTOTAL_HEAP_SIZE		( ( size_t ) ( 30 * 1024 ) )
 #define configMAX_TASK_NAME_LEN		( 16 )
 #define configUSE_16_BIT_TICKS		0
 #define configIDLE_SHOULD_YIELD		1
 
-/* ������ʱ������������ */
-#define configTIMER_TASK_PRIORITY 10 //��ʱ����������ȼ�,Խ����ʱ�������׼
-#define configTIMER_QUEUE_LENGTH  15 //��ʱ���������Ϣ���г���
-#define configTIMER_TASK_STACK_DEPTH 128 //��ʱ������Ķ�ջ��С
+/* 软件定时器组的相关配置 */
+#define configTIMER_TASK_PRIORITY 10 //定时器任务的优先级,越高则定时器会更精准
+#define configTIMER_QUEUE_LENGTH  15 //定时器任务的消息队列长度
+#define configTIMER_TASK_STACK_DEPTH 128 //定时器任务的堆栈大小
 
-/* ʹ����Ϣ���� */
+/* 使能消息队列 */
 #define configUSE_QUEUE_SETS    1
-/* ʹ���ź��� */
+/* 使能信号量 */
 #define configUSE_COUNTING_SEMAPHORES  1
-/* ʹ�ܻ����ź��� */
+/* 使能互斥信号量 */
 #define  configUSE_MUTEXES  1
-/* ʹ�ܵݹ黥���ź��� */
+/* 使能递归互斥信号量 */
 #define configUSE_RECURSIVE_MUTEXES  1
-/* ʹ��������ʱ���� */
+/* 使能软件定时器组 */
 #define configUSE_TIMERS   1
 
 
@@ -144,10 +144,10 @@
 #define configUSE_CO_ROUTINES 		0
 #define configMAX_CO_ROUTINE_PRIORITIES ( 2 )
 
-/* ����ʱʹ��,�ڹ������ʱ��Ҫ���ε�,��Ϊ������ϵͳ���� */
-#define configUSE_TRACE_FACILITY              1  //Ϊ1���ÿ��ӻ����ٵ���
-#define configGENERATE_RUN_TIME_STATS         1  //Ϊ1ʱ��������ʱ��ͳ�ƹ���
-#define configUSE_STATS_FORMATTING_FUNCTIONS	1  //���configUSE_TRACE_FACILITYͬʱΪ1ʱ���������3������
+/* 调试时使用,在工程完成时需要屏蔽掉,因为会增加系统开销 */
+#define configUSE_TRACE_FACILITY              1  //为1启用可视化跟踪调试
+#define configGENERATE_RUN_TIME_STATS         1  //为1时启用运行时间统计功能
+#define configUSE_STATS_FORMATTING_FUNCTIONS	1  //与宏configUSE_TRACE_FACILITY同时为1时会编译下面3个函数
                                                  //prvWriteNameToBuffer(),vTaskList(),
                                                  //vTaskGetRunTimeStats()
 #define portCONFIGURE_TIMER_FOR_RUN_TIME_STATS() (debug_timerTick = 0)
@@ -204,4 +204,3 @@ standard names. */
 #endif
 
 #endif /* FREERTOS_CONFIG_H */
-

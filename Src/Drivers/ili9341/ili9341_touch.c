@@ -21,19 +21,19 @@ void GT9XX_Reset(void)
 	// 初始化引脚状态
 	gpio_bits_reset(GPIOA,GPIO_PINS_2);  // INT输出低电平
 	gpio_bits_set(GPIOA,GPIO_PINS_3);    // RST输出高	电平
-	GT911_IIC_Delay(10000);
+	delay_ms(10);
 	
 	// 开始执行复位
 	//	INT引脚保持低电平不变，将器件地址设置为0XBA/0XBB
 	gpio_bits_reset(GPIOA,GPIO_PINS_3); // 拉低复位引脚，此时芯片执行复位
-	GT911_IIC_Delay(150000);			// 延时
+	delay_ms(150);			// 延时
 	gpio_bits_set(GPIOA,GPIO_PINS_3);			// 拉高复位引脚，复位结束
-	GT911_IIC_Delay(350000);			// 延时
+	delay_ms(350);			// 延时
 	GT911_INT_In();						// INT引脚转为浮空输入
-	GT911_IIC_Delay(20000);				// 延时
+	delay_ms(20);				// 延时
 									
 }
-
+#ifdef SOFTWARE_IIC
 /*************************************************************************************************************************************
 *	函 数 名:	GT9XX_WriteHandle
 *	入口参数:	addr - 要操作的寄存器
@@ -170,6 +170,7 @@ uint8_t GT9XX_ReadReg (uint16_t addr, uint8_t cnt, uint8_t *value)
 	return (status);	
 }
 
+#endif
 /*************************************************************************************************************************************
 *	函 数 名: PanelRecognition
 *	入口参数: 无
@@ -233,11 +234,15 @@ uint8_t GT911_Init(void)
 	
 	GT911_IIC_GPIO_Config(); 	// 初始化IIC引脚
 	GT9XX_Reset();					// 复位IC
-		
+
+#ifdef SOFTWARE_IIC		
 	GT9XX_ReadReg (GT9XX_ID_ADDR,11,GT9XX_Info);		// 读触摸屏IC信息
 	GT9XX_ReadReg (GT9XX_CFG_ADDR,1,&cfgVersion);	// 读触摸配置版本
+#else
+	GT911_IIC_ReadReg(GT9XX_ID_ADDR,11,GT9XX_Info);		// 读触摸屏IC信息
+	GT911_IIC_ReadReg(GT9XX_CFG_ADDR,1,&cfgVersion);	// 读触摸配置版本
+#endif
 
-	
 	if( GT9XX_Info[0] == '9' )	//判断第一个字符是否为 9
 	{
 		printf("Touch ID: GT%.4s \r\n",GT9XX_Info);	//打印触摸芯片的ID
@@ -281,9 +286,14 @@ void GT911_Scan(void)
 {
  	uint8_t  touchData[2 + 8 * GT911_MAX ]; 		// 用于存储触摸数据
 	uint8_t  i = 0;	
-	
+#ifdef SOFTWARE_IIC	
 	GT9XX_ReadReg (GT9XX_READ_ADDR,2 + 8 * GT911_MAX ,touchData);	// 读数据
 	GT9XX_WriteData (GT9XX_READ_ADDR,0);									//	清除触摸芯片的寄存器标志位
+#else
+	GT911_IIC_ReadReg(GT9XX_READ_ADDR,2 + 8 * GT911_MAX ,touchData);	// 读数据
+	GT911_IIC_WriteReg(GT9XX_READ_ADDR, 1, 0);									//	清除触摸芯片的寄存器标志位
+#endif
+
 	touchInfo.num = touchData[0] & 0x0f;									// 取当前的触摸点数
 	
 	if ( (touchInfo.num >= 1) && (touchInfo.num <=5) ) 	//	当触摸数在 1-5 之间时

@@ -21,15 +21,6 @@ typedef struct
 
 extern volatile TouchStructure touchInfo;	// 触摸数据结构体声明	
 
-/*------------------------------------ 寄存定义 -----------------------------------*/  		
-
-#define GT9XX_IIC_RADDR 0xBB			// IIC初始化地址
-#define GT9XX_IIC_WADDR 0xBA
-
-#define GT9XX_CFG_ADDR 	0x8047		// 固件配置信息寄存器和配置起始地址
-#define GT9XX_READ_ADDR 0x814E		// 触摸信息寄存器
-#define GT9XX_ID_ADDR 	0x8140		// 触摸面板ID寄存器
-
 /*------------------------------------ 函数声明 -----------------------------------*/  		
 
 uint8_t 	GT911_Init(void);		// 触摸屏初始化

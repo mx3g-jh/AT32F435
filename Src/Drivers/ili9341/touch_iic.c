@@ -21,8 +21,11 @@
 	************************************************************************************************************************
 ***/
 
-#include "touch_iic.h"  
+#include "touch_iic.h"
 
+
+i2c_handle_type hi2cx;
+i2c_status_type i2c_status;
 
 /*****************************************************************************************
 *	函 数 名: GT911_IIC_GPIO_Config
@@ -39,6 +42,7 @@ void GT911_IIC_GPIO_Config(void)
 	gpio_init_type gpio_initstructure;
 	gpio_default_para_init(&gpio_initstructure);
 
+#ifdef SOFTWARE_IIC
     /* configure key pin as input with pull-down */
     gpio_initstructure.gpio_drive_strength = GPIO_DRIVE_STRENGTH_STRONGER;
     gpio_initstructure.gpio_out_type  = GPIO_OUTPUT_OPEN_DRAIN;
@@ -46,54 +50,114 @@ void GT911_IIC_GPIO_Config(void)
     gpio_initstructure.gpio_pull = GPIO_PULL_NONE;
 	gpio_initstructure.gpio_pins           = GPIO_PINS_0 | GPIO_PINS_1;
 	gpio_init(GPIOA, &gpio_initstructure);
-
+#endif
+    gpio_initstructure.gpio_drive_strength = GPIO_DRIVE_STRENGTH_STRONGER;
     gpio_initstructure.gpio_out_type  = GPIO_OUTPUT_PUSH_PULL;
     gpio_initstructure.gpio_mode = GPIO_MODE_OUTPUT;
     gpio_initstructure.gpio_pull = GPIO_PULL_UP;
 	gpio_initstructure.gpio_pins           = GPIO_PINS_2 | GPIO_PINS_3;
 	gpio_init(GPIOA, &gpio_initstructure);
 
+#ifdef SOFTWARE_IIC
 	gpio_bits_set(GPIOA,GPIO_PINS_0);
 	gpio_bits_set(GPIOA,GPIO_PINS_1);
+#endif
 	gpio_bits_reset(GPIOA,GPIO_PINS_2);
 	gpio_bits_set(GPIOA,GPIO_PINS_3);
+
+#ifdef HARDWARE_IIC
+	//hardware iic
+	/* i2c config */
+	hi2cx.i2cx = I2C2;
+  	i2c_config(&hi2cx);
+#endif
 }
 
-// void GT911_IIC_GPIO_Config (void)
-// {
-// 	GPIO_InitTypeDef GPIO_InitStruct = {0};
-	
-// 	GT911_IIC_SCL_CLK_ENABLE;	//初始化IO口时钟
-// 	GT911_IIC_SDA_CLK_ENABLE;
-// 	GT911_INT_CLK_ENABLE;	
-// 	GT911_RST_CLK_ENABLE;	
-	
-// 	GPIO_InitStruct.Pin 			= GT911_IIC_SCL_PIN;				// SCL引脚
-// 	GPIO_InitStruct.Mode 		= GPIO_MODE_OUTPUT_OD;			// 开漏输出
-// 	GPIO_InitStruct.Pull 		= GPIO_NOPULL;						// 不带上下拉
-// 	GPIO_InitStruct.Speed 		= GPIO_SPEED_FREQ_LOW;			// 速度等级 
-// 	HAL_GPIO_Init(GT911_IIC_SCL_PORT, &GPIO_InitStruct);
+#ifdef HARDWARE_IIC
+/**
+  * @brief  initializes peripherals used by the i2c.
+  * @param  none
+  * @retval none
+  */
+void i2c_lowlevel_init(i2c_handle_type* hi2c)
+{
+  gpio_init_type gpio_init_structure;
 
-// 	GPIO_InitStruct.Pin 			= GT911_IIC_SDA_PIN;				// SDA引脚
-// 	HAL_GPIO_Init(GT911_IIC_SDA_PORT, &GPIO_InitStruct);		
+  if(hi2c->i2cx == I2C2)
+  {
+    /* i2c periph clock enable */
+    crm_periph_clock_enable(CRM_I2C2_PERIPH_CLOCK, TRUE);
+    crm_periph_clock_enable(CRM_GPIOA_PERIPH_CLOCK, TRUE);
 
-	
-// 	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;      			// 推挽输出
-// 	GPIO_InitStruct.Pull  = GPIO_PULLUP;		 					// 上拉	
-	
-// 	GPIO_InitStruct.Pin = GT911_INT_PIN; 							//	INT
-// 	HAL_GPIO_Init(GT911_INT_PORT, &GPIO_InitStruct);				
+    /* gpio configuration */
+    gpio_pin_mux_config(GPIOA, GPIO_PINS_SOURCE0, GPIO_MUX_4);
 
-// 	GPIO_InitStruct.Pin = GT911_RST_PIN; 							//	RST
-// 	HAL_GPIO_Init(GT911_RST_PORT, &GPIO_InitStruct);					   
+    gpio_pin_mux_config(GPIOA, GPIO_PINS_SOURCE1, GPIO_MUX_4);
 
-// 	HAL_GPIO_WritePin(GT911_IIC_SCL_PORT, GT911_IIC_SCL_PIN, GPIO_PIN_SET);		// SCL输出高电平
-// 	HAL_GPIO_WritePin(GT911_IIC_SDA_PORT, GT911_IIC_SDA_PIN, GPIO_PIN_SET);    // SDA输出高电平
-// 	HAL_GPIO_WritePin(GT911_INT_PORT, 	  GT911_INT_PIN,     GPIO_PIN_RESET);  // INT输出低电平
-// 	HAL_GPIO_WritePin(GT911_RST_PORT,     GT911_RST_PIN,     GPIO_PIN_SET);    // RST输出高电平
+    /* configure i2c pins: scl */
+    gpio_init_structure.gpio_drive_strength = GPIO_DRIVE_STRENGTH_STRONGER;
+    gpio_init_structure.gpio_mode           = GPIO_MODE_MUX;
+    gpio_init_structure.gpio_out_type       = GPIO_OUTPUT_OPEN_DRAIN;
+    gpio_init_structure.gpio_pull           = GPIO_PULL_UP;
 
-// }
+    gpio_init_structure.gpio_pins           = GPIO_PINS_0;
+    gpio_init(GPIOA, &gpio_init_structure);
 
+    /* configure i2c pins: sda */
+    gpio_init_structure.gpio_pins           = GPIO_PINS_1;
+    gpio_init(GPIOA, &gpio_init_structure);
+
+#ifdef GT911_USE_DMA
+    /* configure and enable i2c interrupt */
+    // nvic_irq_enable(I2C2_EVT_IRQn, 0, 0);
+    // nvic_irq_enable(I2C2_ERR_IRQn, 0, 0);
+
+    /* configure and enable i2c dma channel interrupt */
+    // nvic_irq_enable(DMA1_Channel2_IRQn, 0, 0);
+    // nvic_irq_enable(DMA1_Channel3_IRQn, 0, 0);
+
+    /* i2c dma tx and rx channels configuration */
+    /* enable the dma clock */
+    crm_periph_clock_enable(CRM_DMA1_PERIPH_CLOCK, TRUE);
+
+    /* i2c dma channel configuration */
+    dma_reset(hi2c->dma_tx_channel);
+    dma_reset(hi2c->dma_rx_channel);
+
+    hi2c->dma_tx_channel = DMA1_CHANNEL2;
+    hi2c->dma_rx_channel = DMA1_CHANNEL3;
+
+    hi2c->dma_init_struct.peripheral_base_addr    = (uint32_t)&hi2c->i2cx->txdt;
+    hi2c->dma_init_struct.memory_base_addr        = 0;
+    hi2c->dma_init_struct.direction               = DMA_DIR_MEMORY_TO_PERIPHERAL;
+    hi2c->dma_init_struct.buffer_size             = 0xFFFF;
+    hi2c->dma_init_struct.peripheral_inc_enable   = FALSE;
+    hi2c->dma_init_struct.memory_inc_enable       = TRUE;
+    hi2c->dma_init_struct.peripheral_data_width   = DMA_PERIPHERAL_DATA_WIDTH_BYTE;
+    hi2c->dma_init_struct.memory_data_width       = DMA_MEMORY_DATA_WIDTH_BYTE;
+    hi2c->dma_init_struct.loop_mode_enable        = FALSE;
+    hi2c->dma_init_struct.priority                = DMA_PRIORITY_LOW;
+
+    dma_init(hi2c->dma_tx_channel, &hi2c->dma_init_struct);
+    dma_init(hi2c->dma_rx_channel, &hi2c->dma_init_struct);
+
+    dmamux_init(DMA1MUX_CHANNEL2, DMAMUX_DMAREQ_ID_I2C2_TX);
+    dmamux_init(DMA1MUX_CHANNEL3, DMAMUX_DMAREQ_ID_I2C2_RX);
+
+    dmamux_enable(DMA1, TRUE);
+
+#endif
+    /* config i2c */
+    i2c_init(hi2c->i2cx, 0x0F, I2Cx_CLKCTRL);
+
+    i2c_own_address1_set(hi2c->i2cx, I2C_ADDRESS_MODE_7BIT, GT9XX_IIC_WADDR);
+	printf("TouchPad GT911 init\r\n");
+  }
+}
+
+#endif
+
+#ifdef SOFTWARE_IIC
 /*****************************************************************************************
 *	函 数 名: GT911_IIC_Delay
 *	入口参数: a - 延时时间
@@ -110,7 +174,7 @@ void GT911_IIC_Delay(uint32_t a)
 		for (i = 0; i < 8; i++);
 	}
 }
-
+#endif
 /*****************************************************************************************
 *	函 数 名: GT911_IIC_INT_Out
 *	入口参数: 无
@@ -121,9 +185,6 @@ void GT911_IIC_Delay(uint32_t a)
 
 void GT911_INT_Out(void)
 {
-
-	// crm_periph_clock_enable(CRM_GPIOA_PERIPH_CLOCK, TRUE); 
-
 	gpio_init_type gpio_initstructure;
 	gpio_default_para_init(&gpio_initstructure);
 
@@ -134,15 +195,7 @@ void GT911_INT_Out(void)
     gpio_initstructure.gpio_pull = GPIO_PULL_UP;
 	gpio_initstructure.gpio_pins           = GPIO_PINS_2;
 	gpio_init(GPIOA, &gpio_initstructure);
-
-	// GPIO_InitTypeDef GPIO_InitStruct = {0};
 	
-	// GPIO_InitStruct.Mode  = GPIO_MODE_OUTPUT_PP;      	// 输出模式
-	// GPIO_InitStruct.Pull  = GPIO_PULLUP;		 			// 上拉	
-	// GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;    	// 速度等级
-	// GPIO_InitStruct.Pin   = GT911_INT_PIN ;  				// 初始化 INT 引脚
-	
-	// HAL_GPIO_Init(GT911_INT_PORT, &GPIO_InitStruct);		
 }
 
 /*****************************************************************************************
@@ -167,17 +220,9 @@ void GT911_INT_In(void)
 	gpio_initstructure.gpio_pins           = GPIO_PINS_2;
 	gpio_init(GPIOA, &gpio_initstructure);
 
-	// GPIO_InitTypeDef GPIO_InitStruct = {0};
-	
-	// GPIO_InitStruct.Mode  = GPIO_MODE_INPUT;      		// 输入模式
-	// GPIO_InitStruct.Pull  = GPIO_NOPULL;		 			// 浮空	
-	// GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;    	// 速度等级
-	// GPIO_InitStruct.Pin   = GT911_INT_PIN ;  				// 初始化 INT 引脚
-	
-	// HAL_GPIO_Init(GT911_INT_PORT, &GPIO_InitStruct);		
-
 }
 
+#ifdef SOFTWARE_IIC
 /*****************************************************************************************
 *	函 数 名: GT911_IIC_Start
 *	入口参数: 无
@@ -359,3 +404,61 @@ uint8_t GT911_IIC_ReadByte(uint8_t ACK_Mode)
 }
 
 /********************************************************************************************/
+#endif
+
+#ifdef HARDWARE_IIC
+/*************************************************************************************************************************************
+*	函 数 名:	GT9XX_WriteReg
+*	入口参数:	addr - 要写入的寄存器区域首地址
+*					cnt  - 数据长度
+*					value - 要写入的数据区
+*	返 回 值:	SUCCESS - 操作成功
+*					ERROR	  - 操作失败
+*	函数功能:	GT9XX 写寄存器
+*	说    明:	往芯片的寄存器区写入指定长度的数据
+************************************************************************************************************************************/
+
+uint8_t GT911_IIC_WriteReg(uint16_t addr, uint8_t cnt, uint8_t *value)
+{
+	uint8_t status = SUCCESS;
+#ifdef GT911_USE_DMA
+	if((i2c_memory_write_dma(&hi2cx, I2C_MEM_ADDR_WIDIH_16, GT9XX_IIC_WADDR, addr, value, cnt, I2C_TIMEOUT)) != I2C_OK){
+		status = ERROR;		// 写入失败
+	}
+#else
+	if((i2c_memory_write(&hi2cx, I2C_MEM_ADDR_WIDIH_16, GT9XX_IIC_WADDR, addr, value, cnt, I2C_TIMEOUT)) != I2C_OK){
+		status = ERROR;		// 写入失败
+	}
+#endif
+	return status;	
+}
+
+/*************************************************************************************************************************************
+*	函 数 名:	GT9XX_ReadReg
+*	入口参数:	addr - 要读取的寄存器区域首地址
+*					cnt  - 数据长度
+*					value - 要读取的数据区
+*	返 回 值:	SUCCESS - 操作成功
+*					ERROR	  - 操作失败
+*	函数功能:	GT9XX 读寄存器
+*	说    明:	从芯片的寄存器区读取指定长度的数据
+************************************************************************************************************************************/
+
+uint8_t GT911_IIC_ReadReg(uint16_t addr, uint8_t cnt, uint8_t *value)
+{
+	uint8_t status = SUCCESS;
+#ifdef GT911_USE_DMA
+	if(i2c_memory_read_dma(&hi2cx, I2C_MEM_ADDR_WIDIH_16, GT9XX_IIC_RADDR, addr, value, cnt , I2C_TIMEOUT) != I2C_OK)
+	{
+		status = ERROR;
+	}
+#else
+	if(i2c_memory_read(&hi2cx, I2C_MEM_ADDR_WIDIH_16, GT9XX_IIC_RADDR, addr, value, cnt , I2C_TIMEOUT) != I2C_OK)
+	{
+		status = ERROR;
+	}
+#endif
+	return (status);	
+}
+
+#endif
