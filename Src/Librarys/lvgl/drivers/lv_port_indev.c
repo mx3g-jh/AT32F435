@@ -192,13 +192,16 @@ static void touchpad_read(lv_indev_drv_t * indev_drv, lv_indev_data_t * data)
     static lv_coord_t last_y = 0;
 
     /*Save the pressed coordinates and the state*/
-    if(touchpad_is_pressed()) {
-        ILI9341_TouchGetCoordinates(&last_x, &last_y);
-        data->state = LV_INDEV_STATE_PR;
-    }
-    else {
-        data->state = LV_INDEV_STATE_REL;
-    }
+	if(touchInfo.flag == 1) 
+	{
+		last_x = touchInfo.x[0];
+		last_y = touchInfo.y[0];
+		data->state = LV_INDEV_STATE_PR;
+	} 
+	else 
+	{
+		data->state = LV_INDEV_STATE_REL;
+	}
 
     /*Set the last pressed coordinates*/
     data->point.x = last_x;
@@ -209,8 +212,8 @@ static void touchpad_read(lv_indev_drv_t * indev_drv, lv_indev_data_t * data)
 static bool touchpad_is_pressed(void)
 {
     /*Your code comes here*/
-    return ILI9341_TouchPressed();
-    // return false;
+    // return ILI9341_TouchPressed();
+    return false;
 }
 
 /*Get the x and y coordinates if the touchpad is pressed*/

@@ -25,6 +25,7 @@
 /* includes */
 #include "main.h"
 #include "ili9341_touch.h"
+// #include "touch_320x480.h"
 lv_ui guider_ui;
 /** @addtogroup AT32F435_periph_examples
   * @{
@@ -47,18 +48,17 @@ void Debug_print(void *pvParameters)
 	while (1)
 	{
     vTaskDelay(1000);
-    printf("SYSCLK_Frequency = %d\r\n", (uint32_t)Get_Clocks.sclk_freq);
-		printf("====================Task===================\r\n");
-		printf("  name       state     pri     stack    num\r\n");
-		vTaskList((char *)task_buff);
-		printf("%s", task_buff);
-		printf("===========================================\r\n");
-    crm_clocks_freq_get(&Get_Clocks);
-    printf("SYSCLK_Frequency = %d\r\n", (uint32_t)Get_Clocks.sclk_freq);
-	  printf("HCLK_Frequency   = %d\r\n", (uint32_t)Get_Clocks.ahb_freq);
-	  printf("PCLK1_Frequency  = %d\r\n", (uint32_t)Get_Clocks.apb1_freq);
-	  printf("PCLK2_Frequency  = %d\r\n", (uint32_t)Get_Clocks.apb2_freq);
-    printf("systemcoreclock  = %d\r\n", (uint32_t)SystemCoreClock);
+		// printf("====================Task===================\r\n");
+		// printf("  name       state     pri     stack    num\r\n");
+		// vTaskList((char *)task_buff);
+		// printf("%s", task_buff);
+		// printf("===========================================\r\n");
+    // crm_clocks_freq_get(&Get_Clocks);
+    // printf("SYSCLK_Frequency = %d\r\n", (uint32_t)Get_Clocks.sclk_freq);
+	  // printf("HCLK_Frequency   = %d\r\n", (uint32_t)Get_Clocks.ahb_freq);
+	  // printf("PCLK1_Frequency  = %d\r\n", (uint32_t)Get_Clocks.apb1_freq);
+	  // printf("PCLK2_Frequency  = %d\r\n", (uint32_t)Get_Clocks.apb2_freq);
+    // printf("systemcoreclock  = %d\r\n", (uint32_t)SystemCoreClock);
     at32_led_toggle(LED2);
 		vTaskDelay(500);
 	}
@@ -84,18 +84,16 @@ void Lvgl_display_task(void *pvParameters)
   // setup_ui(&guider_ui);
   // events_init(&guider_ui);
   // ui_init();
-  lv_demo_benchmark();
-  // lv_demo_widgets();
+  // lv_demo_benchmark();
+  lv_demo_widgets();
   uint16_t *x;
   uint16_t *y;
   while (1)
   {
-    // printf("touchpad\r\n");
-    if(ILI9341_TouchPressed()){
-        printf("touchpad_get_xy = %d %d\r\n", x,y);
-    }
+    // printf("touchpad %d\r\n", gpio_input_data_bit_read(GPIOA, GPIO_PINS_2));
+    GT911_Scan();
 
-    vTaskDelay(100);
+    vTaskDelay(20);
     // lv_event_send(ui_ImgButton1, LV_EVENT_CLICKED, NULL);
     // vTaskDelay(2000);
     // lv_event_send(ui_ImgButton6, LV_EVENT_CLICKED, NULL);
@@ -127,11 +125,12 @@ int main(void)
 
   at32_board_init();
   uart_print_init(115200);
-
+  GT911_Init();
   // LCD_Init();
   ILI9341_GPIO_Init();
   TFT_ILI9341_Init();
-  ILI9341_Touch_GPIO_Init();
+
+  // ILI9341_Touch_GPIO_Init();
   // delay_ms(200);
   // ILI9341_FillScreen(ILI9341_BLACK);
 	taskENTER_CRITICAL();

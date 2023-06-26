@@ -18,7 +18,7 @@ void ILI9341_GPIO_Init(void)
 	gpio_initstructure.gpio_mode           = GPIO_MODE_OUTPUT;
 	gpio_initstructure.gpio_pins           = GPIO_PINS_3 | GPIO_PINS_4; 
 	gpio_init(GPIOA, &gpio_initstructure);
-	gpio_initstructure.gpio_pins           = GPIO_PINS_0 | GPIO_PINS_1 | GPIO_PINS_2; 
+	gpio_initstructure.gpio_pins           = GPIO_PINS_0 | GPIO_PINS_1; 
 	gpio_init(GPIOB, &gpio_initstructure);   
 
 	gpio_pin_mux_config(GPIOA, GPIO_PINS_SOURCE5, GPIO_MUX_5);
