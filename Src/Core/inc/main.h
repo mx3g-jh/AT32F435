@@ -34,6 +34,7 @@ extern "C" {
 #include "stream_buffer.h"
 #include "message_buffer.h"
 #include "semphr.h"
+#include "freertos_tasks.h"
 #include "lv_tick_custom.h"
 
 

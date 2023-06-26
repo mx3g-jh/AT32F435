@@ -5,6 +5,7 @@
 #include "fonts.h"
 #include <stdbool.h>
 #include "main.h"
+
 #include "at32f435_437.h"
 #include "at32f435_437_board.h"
 
@@ -28,16 +29,16 @@
 #define ILI9341_BLK_Set()  gpio_bits_set(GPIOB,GPIO_PINS_1)
 
 // default orientation
-// #define ROTATION_NONE
-// #define ILI9341_WIDTH  240
-// #define ILI9341_HEIGHT 320
-// #define ILI9341_ROTATION (ILI9341_MADCTL_MX | ILI9341_MADCTL_BGR)
+#define ROTATION_NONE
+#define ILI9341_WIDTH  320
+#define ILI9341_HEIGHT 480
+#define ILI9341_ROTATION (ILI9341_MADCTL_MX | ILI9341_MADCTL_BGR)
 
 // rotate right
-#define ROTATION_RIGHT
-#define ILI9341_WIDTH  480
-#define ILI9341_HEIGHT 320
-#define ILI9341_ROTATION (ILI9341_MADCTL_MX | ILI9341_MADCTL_MY | ILI9341_MADCTL_MV | ILI9341_MADCTL_BGR)
+// #define ROTATION_RIGHT
+// #define ILI9341_WIDTH  480
+// #define ILI9341_HEIGHT 320
+// #define ILI9341_ROTATION (ILI9341_MADCTL_MX | ILI9341_MADCTL_MY | ILI9341_MADCTL_MV | ILI9341_MADCTL_BGR)
 
 // rotate left
 // #define ROTATION_LEFT
@@ -48,8 +49,8 @@
 
 // upside down
 // #define ROTATION_UPSIDE_DOWN
-// #define ILI9341_WIDTH  240
-// #define ILI9341_HEIGHT 320
+// #define ILI9341_WIDTH  320
+// #define ILI9341_HEIGHT 480
 // #define ILI9341_ROTATION (ILI9341_MADCTL_MY | ILI9341_MADCTL_BGR)
 
 

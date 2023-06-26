@@ -291,8 +291,7 @@ void GT911_Scan(void)
 		for(i=0;i<touchInfo.num;i++)		// 取相应的触摸坐标
 		{
 			touchInfo.y[i] = (touchData[5+8*i]<<8) | touchData[4+8*i];	// 获取Y坐标
-			touchInfo.x[i] = (touchData[3+8*i]<<8) | touchData[2+8*i];	//	获取X坐标	
-            rotation_gt911((uint16_t*)touchInfo.x[i],(uint16_t*)touchInfo.y[i]);
+			touchInfo.x[i] = (touchData[3+8*i]<<8) | touchData[2+8*i];	//	获取X坐标
 		    // printf("触摸id[%d]: X %d Y %d\r\n",i,touchInfo.x[i],touchInfo.y[i]);	// 当前触摸分辨率	
 /*---------版本识别，RGB070M1-800*480 V1.1以及之后的硬件版本或者其它尺寸的屏幕，无需理会此段代码-----*/	
 	
@@ -306,6 +305,7 @@ void GT911_Scan(void)
 /*-------------------------------------------------------------------------------------------------*/			
 			
 		}
+		rotation_gt911(&touchInfo);
 		touchInfo.flag = 1;	// 触摸标志位置1，代表有触摸动作发生
 	}
 	else                       
@@ -314,32 +314,32 @@ void GT911_Scan(void)
 	}
 }
 
-void rotation_gt911(uint16_t *out_x , uint16_t *out_y)
+void rotation_gt911(volatile TouchStructure *touch_structure)
 {
-    uint16_t mid;
+
+for (int i = 0; i< GT911_MAX; i++){
+	uint16_t mid;
 #ifdef ROTATION_RIGHT
-    mid = *out_x;
-    *out_x = GT911_WIDTH - *out_y;
-    *out_y = mid;
+
+    mid = touch_structure->x[i];
+    touch_structure->x[i] = GT911_WIDTH - touch_structure->y[i];
+   	touch_structure->y[i] = mid;
 #endif
 
 #ifdef ROTATION_LEFT
-    mid = *out_x;
-    *out_x = GT911_WIDTH - *out_y;
-    *out_y = mid;
+    mid = GT911_HEIGHT -  touch_structure->x[i];
+    touch_structure->x[i] = touch_structure->y[i];
+   	touch_structure->y[i] = mid;
 #endif
 
 #ifdef ROTATION_UPSIDE_DOWN
-    mid = *out_x;
-    *out_x = GT911_WIDTH - *out_y;
-    *out_y = mid;
+    touch_structure->x[i] = GT911_WIDTH - touch_structure->x[i];
+   	touch_structure->y[i] = GT911_HEIGHT - touch_structure->y[i];
 #endif
 
 #ifdef ROTATION_NONE
-    mid = *out_x;
-    *out_x = GT911_WIDTH - *out_y;
-    *out_y = mid;
+	// pass
 #endif
-
+}
 }
 /*************************************************************************************************************************************************************************************************FANKE****/

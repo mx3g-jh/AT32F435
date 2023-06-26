@@ -25,92 +25,11 @@
 /* includes */
 #include "main.h"
 #include "ili9341_touch.h"
-// #include "touch_320x480.h"
-lv_ui guider_ui;
+
 /** @addtogroup AT32F435_periph_examples
   * @{
   */
 
-/** @addtogroup 435_GPIO_led_toggle GPIO_led_toggle
-  * @{
-  */
-
-TaskHandle_t Debug_print_Handler;
-TaskHandle_t Lvgl_task_Handler;
-TaskHandle_t Lvgl_display_Handler;
-
-void Debug_print(void *pvParameters)
-{
-
-	crm_clocks_freq_type Get_Clocks;
-
-	u8 task_buff[128];
-	while (1)
-	{
-    vTaskDelay(1000);
-		// printf("====================Task===================\r\n");
-		// printf("  name       state     pri     stack    num\r\n");
-		// vTaskList((char *)task_buff);
-		// printf("%s", task_buff);
-		// printf("===========================================\r\n");
-    // crm_clocks_freq_get(&Get_Clocks);
-    // printf("SYSCLK_Frequency = %d\r\n", (uint32_t)Get_Clocks.sclk_freq);
-	  // printf("HCLK_Frequency   = %d\r\n", (uint32_t)Get_Clocks.ahb_freq);
-	  // printf("PCLK1_Frequency  = %d\r\n", (uint32_t)Get_Clocks.apb1_freq);
-	  // printf("PCLK2_Frequency  = %d\r\n", (uint32_t)Get_Clocks.apb2_freq);
-    // printf("systemcoreclock  = %d\r\n", (uint32_t)SystemCoreClock);
-    at32_led_toggle(LED2);
-		vTaskDelay(500);
-	}
-}
-
-void Lvgl_task(void *pvParameters)
-{
-
-  while (1)
-  {
-    lv_task_handler();
-    vTaskDelay(10);
-  }
-}
-
-void Lvgl_display_task(void *pvParameters)
-{
-
-  lv_init();
-  lv_ms_tick_tim();
-  lv_port_disp_init();
-  lv_port_indev_init();
-  // setup_ui(&guider_ui);
-  // events_init(&guider_ui);
-  // ui_init();
-  // lv_demo_benchmark();
-  lv_demo_widgets();
-  uint16_t *x;
-  uint16_t *y;
-  while (1)
-  {
-    // printf("touchpad %d\r\n", gpio_input_data_bit_read(GPIOA, GPIO_PINS_2));
-    GT911_Scan();
-
-    vTaskDelay(20);
-    // lv_event_send(ui_ImgButton1, LV_EVENT_CLICKED, NULL);
-    // vTaskDelay(2000);
-    // lv_event_send(ui_ImgButton6, LV_EVENT_CLICKED, NULL);
-    // vTaskDelay(2000);
-    // lv_event_send(ui_ImgButton2, LV_EVENT_CLICKED, NULL);
-    // vTaskDelay(2000);
-    // lv_event_send(ui_ImgButton5, LV_EVENT_CLICKED, NULL);
-    // vTaskDelay(2000);
-    // lv_event_send(ui_ImgButton3, LV_EVENT_CLICKED, NULL);
-    // vTaskDelay(2000);
-    // lv_event_send(ui_ImgButton4, LV_EVENT_CLICKED, NULL);
-    // vTaskDelay(2000);
-    // vTaskDelay(100);
-  }
-}
-
-__IO uint32_t time_cnt = 0;
 /**
   * @brief  main function.
   * @param  none
@@ -126,38 +45,10 @@ int main(void)
   at32_board_init();
   uart_print_init(115200);
   GT911_Init();
-  // LCD_Init();
   ILI9341_GPIO_Init();
   TFT_ILI9341_Init();
 
-  // ILI9341_Touch_GPIO_Init();
-  // delay_ms(200);
-  // ILI9341_FillScreen(ILI9341_BLACK);
-	taskENTER_CRITICAL();
-	xTaskCreate((TaskFunction_t)Debug_print,
-				(const char *)"Debug_print",
-				(uint16_t)1024,
-				(void *)NULL,
-				(UBaseType_t)1,
-				(TaskHandle_t *)&Debug_print_Handler);
-  
-  xTaskCreate((TaskFunction_t)Lvgl_task,
-            (const char *)"lvgl_task",
-            (uint16_t)1024,
-            (void *)NULL,
-            (UBaseType_t)1,
-            (TaskHandle_t *)&Lvgl_task_Handler);
-
-  xTaskCreate((TaskFunction_t)Lvgl_display_task,
-            (const char *)"Lvgl_display_task",
-            (uint16_t)512,
-            (void *)NULL,
-            (UBaseType_t)1,
-            (TaskHandle_t *)&Lvgl_display_Handler);
-
-	taskEXIT_CRITICAL();
-	vTaskStartScheduler();
-
+  FreeRTOS_Init();
 }
 
 /**

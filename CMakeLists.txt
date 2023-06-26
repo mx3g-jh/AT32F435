@@ -18,7 +18,7 @@ set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
 set(AT_BSPACK_DIR ${CMAKE_SOURCE_DIR}/AT32F435_Firmware_Library)
 set(CMAKE_DIR ${CMAKE_SOURCE_DIR}/cmake)
-set(MCU_NAME -AT32F435CMU7)
+set(MCU_NAME AT32F435CMU7)
 
 # project settings
 project(at32f435proj C CXX ASM)
@@ -492,6 +492,7 @@ set(PROJECT
 	message( "Include PROJECT " ${PROJECT} " in build as " ${PROJECT_NAME})
 	file(GLOB_RECURSE CORE_SOURCES "${CMAKE_SOURCE_DIR}/Src/Core/src/*.*")
 	file(GLOB_RECURSE DRIVERS_SOURCES "${CMAKE_SOURCE_DIR}/Src/Drivers/*.c" "${CMAKE_SOURCE_DIR}/Src/Drivers/*.cpp")
+    file(GLOB_RECURSE TASKS_SOURCES "${CMAKE_SOURCE_DIR}/Src/App/tasks/*.c" "${CMAKE_SOURCE_DIR}/Src/App/tasks/*.cpp")
 
 	set(TARGET ${PROJECT_NAME}.elf)
 	add_executable(${TARGET} 
@@ -502,6 +503,7 @@ set(PROJECT
         ${FREE_RTOS_UI_LIBS_SRC}
         ${FREE_RTOS_TEST_LIBS_SRC}
 		${CORE_SOURCES}
+        ${TASKS_SOURCES}
 		${DRIVERS_SOURCES}
 		${LINKER_SCRIPT}
 	)
@@ -535,6 +537,7 @@ set(PROJECT
             ${CMAKE_SOURCE_DIR}/Src/App/generated/guider_customer_fonts
             ${CMAKE_SOURCE_DIR}/Src/App/dclock
             ${CMAKE_SOURCE_DIR}/Src/App/custom
+            ${CMAKE_SOURCE_DIR}/Src/App/tasks
 
 	)
 

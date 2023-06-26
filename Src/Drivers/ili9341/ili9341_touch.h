@@ -7,7 +7,7 @@
 #include "ili9341.h"
 /*------------------------------------ 相关定义 -----------------------------------*/  	
 #define GT911_WIDTH ILI9341_WIDTH
-#define GT911_HEIGHT WIDTHILI9341_HEIGHT
+#define GT911_HEIGHT ILI9341_HEIGHT
 
 #define GT911_MAX   5	//最大触摸点数
 
@@ -35,8 +35,8 @@ extern volatile TouchStructure touchInfo;	// 触摸数据结构体声明
 uint8_t 	GT911_Init(void);		// 触摸屏初始化
 void 		GT911_Scan(void);		// 触摸扫描
 
-void rotation_gt911(uint16_t* out_x , uint16_t* out_y);
-void  	GT9XX_Reset(void);	// 执行复位操作
+void 		rotation_gt911(volatile TouchStructure *touch_structure);
+void  		GT9XX_Reset(void);	// 执行复位操作
 void 		GT9XX_SendCfg(void);	// 发送GT911配置参数
 void 		GT9XX_ReadCfg(void);	// 读取GT911配置参数
 
