@@ -269,7 +269,8 @@ void TFT_ILI9341_Init() {
     // MADCTL
     ILI9341_WR_REG(0x36);
     {
-        ILI9341_WR_REG(ILI9341_ROTATION);
+        uint8_t data[] = { ILI9341_ROTATION };
+        ILI9341_WriteData(data, sizeof(data));
     }
  
     ILI9341_CS_Set();

@@ -21,8 +21,6 @@ extern "C" {
 #else
 #include "lvgl.h"
 #include "at32f435_437_board.h"
-//#include "at32_video_ev_spi.h"
-//#include "at32_video_ev_lcd.h"
 #include "at32f435_437.h"
 #endif
 

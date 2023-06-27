@@ -18,7 +18,7 @@ set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
 set(AT_BSPACK_DIR ${CMAKE_SOURCE_DIR}/AT32F435_Firmware_Library)
 set(CMAKE_DIR ${CMAKE_SOURCE_DIR}/cmake)
-set(MCU_NAME AT32F435CMU7)
+set(MCU_NAME -AT32F435CMU7)
 
 # project settings
 project(at32f435proj C CXX ASM)
@@ -105,53 +105,56 @@ target_include_directories(at32f_lib PRIVATE
 
 #FREE_RTOS_TEST Libraries
 set(FREE_RTOS_TEST_LIBS_SRC
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/setup_scr_copyhome.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/guider_fonts/lv_font_arial_10.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/guider_fonts/lv_font_simsun_18.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/guider_fonts/lv_font_simsun_10.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/guider_fonts/lv_font_montserratMedium_12.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/setup_scr_prtusb.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/setup_scr_printit.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/setup_scr_saved.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/events_init.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_btn_bg_1_alpha_42x88.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_btn3_alpha_42x88.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_ready_alpha_50x50.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_scan_alpha_14x14.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_internet_alpha_15x15.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_cloud_alpha_27x35.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_setup_alpha_14x14.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_btn2_alpha_57x123.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_btn4_alpha_42x88.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_phone_alpha_22x48.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_example_alpha_150x151.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_tel_alpha_10x10.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_printer2_alpha_30x48.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_wifi_alpha_14x16.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_btn4_alpha_57x123.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_btn3_alpha_57x123.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_eco_alpha_10x10.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_wave_alpha_12x12.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_btn2_alpha_42x88.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_hue_alpha_10x10.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_bright_alpha_12x12.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_pc_alpha_10x10.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_copy_alpha_14x14.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_no_internet_alpha_12x12.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_mobile_alpha_15x15.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_example_alpha_125x120.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_print_alpha_14x14.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/images/_usb_alpha_15x15.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/setup_scr_loader.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/setup_scr_prthome.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/setup_scr_prtmb.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/setup_scr_setup.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/gui_guider.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/setup_scr_home.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/setup_scr_scanhome.c
-        ${CMAKE_SOURCE_DIR}/Src/App/generated/setup_scr_copynext.c
-        ${CMAKE_SOURCE_DIR}/Src/App/custom/custom.c
-        ${CMAKE_SOURCE_DIR}/Src/App/dclock/lv_dclock.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/setup_scr_prthome.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/setup_scr_copynext.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_cloud_55x47.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_phone_45x64.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_btn2_alpha_115x164.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_printer2_60x64.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_example_250x161.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_no_internet_25x29.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_hue_21x24.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_btn4_alpha_115x164.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_wifi_29x22.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_mobile_30x35.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_internet_30x35.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_example_300x202.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_scan_29x34.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_eco_21x24.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_wave_25x29.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_btn3_alpha_115x164.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_btn2_alpha_85x117.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_pc_21x24.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_copy_29x34.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_ready_100x117.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_btn_bg_1_alpha_85x117.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_setup_29x34.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_print_29x34.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_tel_21x24.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_btn4_alpha_85x117.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_btn3_alpha_85x117.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_bright_24x28.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_usb_30x35.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/setup_scr_printit.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/setup_scr_prtusb.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/gui_guider.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/setup_scr_home.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/events_init.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/setup_scr_copyhome.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/setup_scr_scanhome.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/setup_scr_loader.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/setup_scr_setup.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/guider_fonts/lv_font_arial_14.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/guider_fonts/lv_font_simsun_18.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/guider_fonts/lv_font_arial_16.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/guider_fonts/lv_font_montserratMedium_12.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/guider_fonts/lv_font_arial_21.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/guider_fonts/lv_font_simsun_12.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/guider_fonts/lv_font_arial_12.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/setup_scr_saved.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/setup_scr_prtmb.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/custom/custom.c
+        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/dclock/lv_dclock.c
     )
 
 #FREE_RTOS_UI Libraries
@@ -532,11 +535,11 @@ set(PROJECT
             ${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/src/draw
             ${CMAKE_SOURCE_DIR}/Src/Librarys/lv_ui/inc
             ${CMAKE_SOURCE_DIR}/Src/Drivers/ili9341
-            ${CMAKE_SOURCE_DIR}/Src/App/generated
-            ${CMAKE_SOURCE_DIR}/Src/App/generated/guider_fonts
-            ${CMAKE_SOURCE_DIR}/Src/App/generated/guider_customer_fonts
-            ${CMAKE_SOURCE_DIR}/Src/App/dclock
-            ${CMAKE_SOURCE_DIR}/Src/App/custom
+            ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated
+            ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/guider_fonts
+            ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/guider_customer_fonts
+            ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/dclock
+            ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/custom
             ${CMAKE_SOURCE_DIR}/Src/App/tasks
 
 	)
