@@ -12,25 +12,24 @@ void ILI9341_GPIO_Init(void)
 	gpio_initstructure.gpio_out_type       = GPIO_OUTPUT_PUSH_PULL;
 	gpio_initstructure.gpio_drive_strength = GPIO_DRIVE_STRENGTH_STRONGER;
 	gpio_initstructure.gpio_mode           = GPIO_MODE_MUX;
-	gpio_initstructure.gpio_pins           = GPIO_PINS_5 | GPIO_PINS_6 | GPIO_PINS_7;
+	gpio_initstructure.gpio_pins           = GPIO_PINS_5 | GPIO_PINS_7;
 	gpio_init(GPIOA, &gpio_initstructure);
 
 	gpio_initstructure.gpio_mode           = GPIO_MODE_OUTPUT;
-	gpio_initstructure.gpio_pins           = GPIO_PINS_3 | GPIO_PINS_4; 
+	gpio_initstructure.gpio_pins           = GPIO_PINS_3 | GPIO_PINS_4 | GPIO_PINS_6; 
 	gpio_init(GPIOA, &gpio_initstructure);
-	gpio_initstructure.gpio_pins           = GPIO_PINS_0 | GPIO_PINS_1; 
+	gpio_initstructure.gpio_pins           = GPIO_PINS_0; 
 	gpio_init(GPIOB, &gpio_initstructure);   
 
 	gpio_pin_mux_config(GPIOA, GPIO_PINS_SOURCE5, GPIO_MUX_5);
-	gpio_pin_mux_config(GPIOA, GPIO_PINS_SOURCE6, GPIO_MUX_5);
 	gpio_pin_mux_config(GPIOA, GPIO_PINS_SOURCE7, GPIO_MUX_5);
 
 	crm_periph_clock_enable(CRM_SPI1_PERIPH_CLOCK, TRUE);
 
 	spi_init_type spi_init_struct;
 	spi_default_para_init(&spi_init_struct);
-	
-	spi_init_struct.transmission_mode = SPI_TRANSMIT_FULL_DUPLEX; 
+
+	spi_init_struct.transmission_mode = SPI_TRANSMIT_HALF_DUPLEX_TX; 
 	spi_init_struct.master_slave_mode = SPI_MODE_MASTER;
 	spi_init_struct.mclk_freq_division = SPI_MCLK_DIV_3; 
 	spi_init_struct.first_bit_transmission = SPI_FIRST_BIT_MSB;

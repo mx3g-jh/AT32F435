@@ -151,7 +151,7 @@ void i2c_lowlevel_init(i2c_handle_type* hi2c)
     i2c_init(hi2c->i2cx, 0x0F, I2Cx_CLKCTRL);
 
     i2c_own_address1_set(hi2c->i2cx, I2C_ADDRESS_MODE_7BIT, GT9XX_IIC_WADDR);
-	printf("TouchPad GT911 init\r\n");
+	DC_LOG_INFO("TouchPad GT911 init");
   }
 }
 

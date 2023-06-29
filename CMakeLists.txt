@@ -157,6 +157,14 @@ set(FREE_RTOS_TEST_LIBS_SRC
         ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/dclock/lv_dclock.c
     )
 
+#DATA_CENTER_LIBS Libraries
+set(DATA_CENTER_LIBS_SRC
+    ${CMAKE_SOURCE_DIR}/Src/Librarys/DataCenter/Account.cpp
+    ${CMAKE_SOURCE_DIR}/Src/Librarys/DataCenter/DataCenter.cpp
+    ${CMAKE_SOURCE_DIR}/Src/Librarys/DataCenter/PingPongBuffer/PingPongBuffer.c
+    )
+
+
 #FREE_RTOS_UI Libraries
 set(FREE_RTOS_UI_LIBS_SRC
     ${CMAKE_SOURCE_DIR}/Src/Librarys/lv_ui/ui_helpers.c
@@ -503,6 +511,7 @@ set(PROJECT
 		$<TARGET_OBJECTS:middlewares_lib>
 		${AT_BSPACK_DIR}/project/at32f435_437_board/at32f435_437_board.c
 		${LVGL_LIBS_SRC}
+        ${DATA_CENTER_LIBS_SRC}
         ${FREE_RTOS_UI_LIBS_SRC}
         ${FREE_RTOS_TEST_LIBS_SRC}
 		${CORE_SOURCES}
@@ -534,6 +543,8 @@ set(PROJECT
             ${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/src/misc
             ${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/src/draw
             ${CMAKE_SOURCE_DIR}/Src/Librarys/lv_ui/inc
+            ${CMAKE_SOURCE_DIR}/Src/Librarys/DataCenter
+            ${CMAKE_SOURCE_DIR}/Src/Librarys/DataCenter/PingPongBuffer
             ${CMAKE_SOURCE_DIR}/Src/Drivers/ili9341
             ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated
             ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/guider_fonts

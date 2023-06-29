@@ -25,8 +25,8 @@
 #define ILI9341_DC_Set()   gpio_bits_set(GPIOA,GPIO_PINS_4) 
 #define ILI9341_CS_Clr()   gpio_bits_reset(GPIOB,GPIO_PINS_0)//CS
 #define ILI9341_CS_Set()   gpio_bits_set(GPIOB,GPIO_PINS_0)
-#define ILI9341_BLK_Clr()  gpio_bits_reset(GPIOB,GPIO_PINS_1)//BLK
-#define ILI9341_BLK_Set()  gpio_bits_set(GPIOB,GPIO_PINS_1)
+#define ILI9341_BLK_Clr()  gpio_bits_reset(GPIOA,GPIO_PINS_6)//BLK
+#define ILI9341_BLK_Set()  gpio_bits_set(GPIOA,GPIO_PINS_6)
 
 // default orientation
 // #define ROTATION_NONE

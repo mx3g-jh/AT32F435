@@ -23,6 +23,8 @@ extern "C" {
 #include "lv_port_indev.h"
 #include "lv_demos.h"
 
+#include "DataCenterLog.h"
+
 #include "events_init.h"
 #include "gui_guider.h"
 //middleware

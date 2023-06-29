@@ -4,6 +4,7 @@
 #include "at32f435_437.h"
 #include "at32f435_437_board.h"
 #include "i2c_application.h"
+#include "main.h"
 
 #define HARDWARE_IIC
 // #define SOFTWARE_IIC

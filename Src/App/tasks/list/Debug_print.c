@@ -30,17 +30,18 @@ void Debug_print(void *pvParameters)
 	while (1)
 	{
     vTaskDelay(1000);
-		printf("====================Task===================\r\n");
-		printf("  name       state     pri     stack    num\r\n");
+		_DC_LOG("====================Task===================");
+		_DC_LOG("  name       state     pri     stack    num");
 		vTaskList((char *)task_buff);
-		printf("%s", task_buff);
-		printf("===========================================\r\n");
+		_DC_LOG("%s", task_buff);
+		_DC_LOG("===========================================");
     crm_clocks_freq_get(&Get_Clocks);
-    printf("SYSCLK_Frequency = %d\r\n", (uint32_t)Get_Clocks.sclk_freq);
-	  printf("HCLK_Frequency   = %d\r\n", (uint32_t)Get_Clocks.ahb_freq);
-	  printf("PCLK1_Frequency  = %d\r\n", (uint32_t)Get_Clocks.apb1_freq);
-	  printf("PCLK2_Frequency  = %d\r\n", (uint32_t)Get_Clocks.apb2_freq);
-    printf("systemcoreclock  = %d\r\n", (uint32_t)SystemCoreClock);
+    DC_LOG_INFO("SYSCLK_Frequency = %d", (uint32_t)Get_Clocks.sclk_freq);
+	  DC_LOG_INFO("HCLK_Frequency   = %d", (uint32_t)Get_Clocks.ahb_freq);
+	  DC_LOG_INFO("PCLK1_Frequency  = %d", (uint32_t)Get_Clocks.apb1_freq);
+	  DC_LOG_INFO("PCLK2_Frequency  = %d", (uint32_t)Get_Clocks.apb2_freq);
+    DC_LOG_INFO("systemcoreclock  = %d", (uint32_t)SystemCoreClock);
+
 		vTaskDelay(1000);
 	}
 }
