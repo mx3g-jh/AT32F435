@@ -102,6 +102,22 @@ target_include_directories(at32f_lib PRIVATE
         ${AT_BSPACK_DIR}/libraries/cmsis/cm4/device_support
         ${AT_BSPACK_DIR}/libraries/cmsis/cm4/core_support
         )
+# MAVLINK Libraries
+set(MAVLINK_LIBS
+    ${CMAKE_SOURCE_DIR}/Src/Librarys/mavlink_v2/cubepilot
+    ${CMAKE_SOURCE_DIR}/Src/Librarys/mavlink_v2/ASLUAV
+    ${CMAKE_SOURCE_DIR}/Src/Librarys/mavlink_v2/common
+    ${CMAKE_SOURCE_DIR}/Src/Librarys/mavlink_v2/csAirLink
+    ${CMAKE_SOURCE_DIR}/Src/Librarys/mavlink_v2/cubepilot
+    ${CMAKE_SOURCE_DIR}/Src/Librarys/mavlink_v2/development
+    ${CMAKE_SOURCE_DIR}/Src/Librarys/mavlink_v2/icarous
+    ${CMAKE_SOURCE_DIR}/Src/Librarys/mavlink_v2/matrixpilot
+    ${CMAKE_SOURCE_DIR}/Src/Librarys/mavlink_v2/minimal
+    ${CMAKE_SOURCE_DIR}/Src/Librarys/mavlink_v2/standard
+    ${CMAKE_SOURCE_DIR}/Src/Librarys/mavlink_v2/test
+    ${CMAKE_SOURCE_DIR}/Src/Librarys/mavlink_v2/uAvionix
+    ${CMAKE_SOURCE_DIR}/Src/Librarys/mavlink_v2
+    )
 
 #FREE_RTOS_TEST Libraries
 set(FREE_RTOS_TEST_LIBS_SRC
@@ -520,6 +536,8 @@ set(PROJECT
 		${LINKER_SCRIPT}
 	)
 	# target_link_libraries(${TARGET} PUBLIC lvgl_lib)
+    target_compile_options(${TARGET} PRIVATE -Wno-address-of-packed-member)
+
 	message("Target added: " ${TARGET})
 	target_include_directories(${TARGET} PRIVATE 
         	${AT_BSPACK_DIR}/libraries/drivers/inc
@@ -553,6 +571,7 @@ set(PROJECT
             ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/dclock
             ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/custom
             ${CMAKE_SOURCE_DIR}/Src/App/tasks
+            ${MAVLINK_LIBS}
 
 	)
 

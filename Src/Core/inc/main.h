@@ -17,6 +17,7 @@ extern "C" {
 //hardware
 #include "bsp_spi_lcd.h"
 #include "ili9341.h"
+#include "ili9341_touch.h"
 #include "mpu6050.h"
 //application
 #include "lvgl.h"
@@ -40,8 +41,9 @@ extern "C" {
 #include "freertos_tasks.h"
 #include "lv_tick_custom.h"
 
-
-
+#include "mavlink.h"
+#define MAVLINK_USE_CONVENIENCE_FUNCTIONS
+extern mavlink_system_t mavlink_system;
 void System_Init(void);
 
 #ifdef __cplusplus

@@ -24,12 +24,11 @@
 
 /* includes */
 #include "main.h"
-#include "ili9341_touch.h"
 
 /** @addtogroup AT32F435_periph_examples
   * @{
   */
-
+mavlink_system_t mavlink_system = {255,0};
 /**
   * @brief  main function.
   * @param  none
