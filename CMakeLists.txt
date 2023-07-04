@@ -546,6 +546,7 @@ set(PROJECT
             ${CMAKE_SOURCE_DIR}/Src/Librarys/DataCenter
             ${CMAKE_SOURCE_DIR}/Src/Librarys/DataCenter/PingPongBuffer
             ${CMAKE_SOURCE_DIR}/Src/Drivers/ili9341
+            ${CMAKE_SOURCE_DIR}/Src/Drivers/mpu6050
             ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated
             ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/guider_fonts
             ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/guider_customer_fonts

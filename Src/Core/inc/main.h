@@ -17,6 +17,7 @@ extern "C" {
 //hardware
 #include "bsp_spi_lcd.h"
 #include "ili9341.h"
+#include "mpu6050.h"
 //application
 #include "lvgl.h"
 #include "lv_port_disp.h"

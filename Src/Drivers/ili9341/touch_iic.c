@@ -152,6 +152,62 @@ void i2c_lowlevel_init(i2c_handle_type* hi2c)
 
     i2c_own_address1_set(hi2c->i2cx, I2C_ADDRESS_MODE_7BIT, GT9XX_IIC_WADDR);
 	DC_LOG_INFO("TouchPad GT911 init");
+  } else if(hi2c->i2cx == I2C1){
+    /* i2c periph clock enable */
+    crm_periph_clock_enable(CRM_I2C1_PERIPH_CLOCK, TRUE);
+    crm_periph_clock_enable(CRM_GPIOB_PERIPH_CLOCK, TRUE);
+
+    /* gpio configuration */
+    gpio_pin_mux_config(GPIOB, GPIO_PINS_SOURCE6, GPIO_MUX_4);
+
+    gpio_pin_mux_config(GPIOB, GPIO_PINS_SOURCE7, GPIO_MUX_4);
+
+    /* configure i2c pins: scl */
+    gpio_init_structure.gpio_drive_strength = GPIO_DRIVE_STRENGTH_STRONGER;
+    gpio_init_structure.gpio_mode           = GPIO_MODE_MUX;
+    gpio_init_structure.gpio_out_type       = GPIO_OUTPUT_OPEN_DRAIN;
+    gpio_init_structure.gpio_pull           = GPIO_PULL_UP;
+
+    gpio_init_structure.gpio_pins           = GPIO_PINS_6;
+    gpio_init(GPIOB, &gpio_init_structure);
+
+    /* configure i2c pins: sda */
+    gpio_init_structure.gpio_pins           = GPIO_PINS_7;
+    gpio_init(GPIOB, &gpio_init_structure);
+
+    /* enable the dma clock */
+    crm_periph_clock_enable(CRM_DMA1_PERIPH_CLOCK, TRUE);
+
+    /* i2c dma channel configuration */
+    dma_reset(hi2c->dma_tx_channel);
+    dma_reset(hi2c->dma_rx_channel);
+
+    hi2c->dma_tx_channel = DMA1_CHANNEL4;
+    hi2c->dma_rx_channel = DMA1_CHANNEL5;
+
+    hi2c->dma_init_struct.peripheral_base_addr    = (uint32_t)&hi2c->i2cx->txdt;
+    hi2c->dma_init_struct.memory_base_addr        = 0;
+    hi2c->dma_init_struct.direction               = DMA_DIR_MEMORY_TO_PERIPHERAL;
+    hi2c->dma_init_struct.buffer_size             = 0xFFFF;
+    hi2c->dma_init_struct.peripheral_inc_enable   = FALSE;
+    hi2c->dma_init_struct.memory_inc_enable       = TRUE;
+    hi2c->dma_init_struct.peripheral_data_width   = DMA_PERIPHERAL_DATA_WIDTH_BYTE;
+    hi2c->dma_init_struct.memory_data_width       = DMA_MEMORY_DATA_WIDTH_BYTE;
+    hi2c->dma_init_struct.loop_mode_enable        = FALSE;
+    hi2c->dma_init_struct.priority                = DMA_PRIORITY_LOW;
+
+    dma_init(hi2c->dma_tx_channel, &hi2c->dma_init_struct);
+    dma_init(hi2c->dma_rx_channel, &hi2c->dma_init_struct);
+
+    dmamux_init(DMA1MUX_CHANNEL4, DMAMUX_DMAREQ_ID_I2C1_TX);
+    dmamux_init(DMA1MUX_CHANNEL5, DMAMUX_DMAREQ_ID_I2C1_RX);
+
+    dmamux_enable(DMA1, TRUE);
+    /* config i2c */
+    i2c_init(hi2c->i2cx, 0x0F, 0x30F03C6B);
+
+    i2c_own_address1_set(hi2c->i2cx, I2C_ADDRESS_MODE_7BIT, 0xD0);
+	DC_LOG_INFO("IMU init");	
   }
 }
 

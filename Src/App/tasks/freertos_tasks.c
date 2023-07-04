@@ -42,7 +42,7 @@ void FreeRTOS_Init(void)
 
 	xTaskCreate((TaskFunction_t)Debug_print,
 				(const char *)"Debug_print",
-				(uint16_t)1560,
+				(uint16_t)2048,
 				(void *)NULL,
 				(UBaseType_t)1,
 				(TaskHandle_t *)&Debug_print_Handler);

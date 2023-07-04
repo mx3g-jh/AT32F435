@@ -25,8 +25,8 @@ void Led_toggle(void *pvParameters)
 {
 	while (1)
 	{
-    vTaskDelay(20);
+    vTaskDelay(2000);
     at32_led_toggle(LED2);
-		vTaskDelay(20);
+		vTaskDelay(2000);
 	}
 }

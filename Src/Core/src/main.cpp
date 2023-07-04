@@ -47,7 +47,7 @@ int main(void)
   GT911_Init();
   ILI9341_GPIO_Init();
   TFT_ILI9341_Init();
-
+  MPU6050_Init();
   FreeRTOS_Init();
 }
 
