@@ -119,76 +119,11 @@ set(MAVLINK_LIBS
     ${CMAKE_SOURCE_DIR}/Src/Librarys/mavlink_v2
     )
 
-#FREE_RTOS_TEST Libraries
-set(FREE_RTOS_TEST_LIBS_SRC
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/setup_scr_prthome.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/setup_scr_copynext.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_cloud_55x47.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_phone_45x64.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_btn2_alpha_115x164.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_printer2_60x64.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_example_250x161.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_no_internet_25x29.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_hue_21x24.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_btn4_alpha_115x164.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_wifi_29x22.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_mobile_30x35.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_internet_30x35.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_example_300x202.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_scan_29x34.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_eco_21x24.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_wave_25x29.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_btn3_alpha_115x164.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_btn2_alpha_85x117.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_pc_21x24.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_copy_29x34.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_ready_100x117.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_btn_bg_1_alpha_85x117.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_setup_29x34.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_print_29x34.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_tel_21x24.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_btn4_alpha_85x117.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_btn3_alpha_85x117.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_bright_24x28.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/images/_usb_30x35.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/setup_scr_printit.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/setup_scr_prtusb.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/gui_guider.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/setup_scr_home.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/events_init.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/setup_scr_copyhome.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/setup_scr_scanhome.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/setup_scr_loader.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/setup_scr_setup.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/guider_fonts/lv_font_arial_14.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/guider_fonts/lv_font_simsun_18.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/guider_fonts/lv_font_arial_16.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/guider_fonts/lv_font_montserratMedium_12.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/guider_fonts/lv_font_arial_21.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/guider_fonts/lv_font_simsun_12.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/guider_fonts/lv_font_arial_12.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/setup_scr_saved.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/setup_scr_prtmb.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/custom/custom.c
-        ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/dclock/lv_dclock.c
-    )
-
 #DATA_CENTER_LIBS Libraries
 set(DATA_CENTER_LIBS_SRC
     ${CMAKE_SOURCE_DIR}/Src/Librarys/DataCenter/Account.cpp
     ${CMAKE_SOURCE_DIR}/Src/Librarys/DataCenter/DataCenter.cpp
     ${CMAKE_SOURCE_DIR}/Src/Librarys/DataCenter/PingPongBuffer/PingPongBuffer.c
-    )
-
-
-#FREE_RTOS_UI Libraries
-set(FREE_RTOS_UI_LIBS_SRC
-    ${CMAKE_SOURCE_DIR}/Src/Librarys/lv_ui/ui_helpers.c
-    ${CMAKE_SOURCE_DIR}/Src/Librarys/lv_ui/img/ui_img_back_png.c
-    ${CMAKE_SOURCE_DIR}/Src/Librarys/lv_ui/img/ui_img_takepic_png.c
-    ${CMAKE_SOURCE_DIR}/Src/Librarys/lv_ui/img/ui_img_weather_png.c
-    ${CMAKE_SOURCE_DIR}/Src/Librarys/lv_ui/img/ui_img_image_png.c
-    ${CMAKE_SOURCE_DIR}/Src/Librarys/lv_ui/ui.c
     )
 
 #LVGL Libraries
@@ -467,49 +402,11 @@ target_include_directories(middlewares_lib PRIVATE
         ${CMAKE_SOURCE_DIR}/Src/Core/inc
 )
 
-#USB Middleware for USB Examples
-file(GLOB_RECURSE USB_MIDDLEWARE_SOURCES
-    "${AT_BSPACK_DIR}/middlewares/usbd_drivers/src/*.*"
-    "${AT_BSPACK_DIR}/middlewares/usbd_class/*.c"
-)
-
 set(LINKER_SCRIPT ${AT_BSPACK_DIR}/libraries/cmsis/cm4/device_support/startup/gcc/linker/AT32F435xM_FLASH.ld)
 
 add_link_options(-Wl,-gc-sections,--print-memory-usage,-Map=${PROJECT_BINARY_DIR}/${PROJECT_NAME}.map)
 add_link_options(-mcpu=${MCPU} -mthumb -mthumb-interwork)
 add_link_options(-T ${LINKER_SCRIPT})
-
-#Special depends for USB examples
-set(USB_DEPENDS)
-macro(add_usb_depends MODULE)
-	set(DEPENDS_LIST ${ARGN})
-	list(JOIN DEPENDS_LIST ":" DEPENDS_STR)
-	list(APPEND USB_DEPENDS ${MODULE}:${DEPENDS_STR})	
-endmacro()
-
-macro(get_usb_depends MODULE)
- 	set(FOUND_USB_DEPENDS)
-	foreach(D ${USB_DEPENDS})
-		#Turn D into a list - with replace!
-		string(REGEX REPLACE ":" ";" D_LIST ${D})
-		list(POP_FRONT D_LIST MODULE_KEY)
-		if(${MODULE} STREQUAL ${MODULE_KEY})
-			set(FOUND_USB_DEPENDS ${D_LIST})
-		endif()
-	endforeach()
-endmacro()
-
-add_usb_depends(usb_device/msc ${AT_BSPACK_DIR}/middlewares/usbd_class/msc)
-add_usb_depends(usb_device/audio ${AT_BSPACK_DIR}/middlewares/usbd_class/audio)
-add_usb_depends(usb_device/mouse ${AT_BSPACK_DIR}/middlewares/usbd_class/mouse)
-add_usb_depends(usb_device/keyboard ${AT_BSPACK_DIR}/middlewares/usbd_class/keyboard)
-add_usb_depends(usb_device/printer ${AT_BSPACK_DIR}/middlewares/usbd_class/printer)
-add_usb_depends(usb_device/custom_hid ${AT_BSPACK_DIR}/middlewares/usbd_class/custom_hid)
-add_usb_depends(usb_device/composite_audio_hid ${AT_BSPACK_DIR}/middlewares/usbd_class/audio_hid)
-add_usb_depends(usb_device/composite_vcp_keyboard ${AT_BSPACK_DIR}/middlewares/usbd_class/composite_cdc_keyboard)
-add_usb_depends(usb_device/vcp_loopback ${AT_BSPACK_DIR}/middlewares/usbd_class/cdc)
-add_usb_depends(usb_device/virtual_msc_iap ${AT_BSPACK_DIR}/middlewares/usbd_class/msc)
-add_usb_depends(acc/calibration ${AT_BSPACK_DIR}/middlewares/usbd_class/cdc)
 
 #add all the executables to build
 set(PROJECT 
@@ -528,14 +425,12 @@ set(PROJECT
 		${AT_BSPACK_DIR}/project/at32f435_437_board/at32f435_437_board.c
 		${LVGL_LIBS_SRC}
         ${DATA_CENTER_LIBS_SRC}
-        ${FREE_RTOS_UI_LIBS_SRC}
-        ${FREE_RTOS_TEST_LIBS_SRC}
 		${CORE_SOURCES}
         ${TASKS_SOURCES}
 		${DRIVERS_SOURCES}
 		${LINKER_SCRIPT}
 	)
-	# target_link_libraries(${TARGET} PUBLIC lvgl_lib)
+
     target_compile_options(${TARGET} PRIVATE -Wno-address-of-packed-member)
 
 	message("Target added: " ${TARGET})
@@ -560,44 +455,14 @@ set(PROJECT
             ${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/src/widgets
             ${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/src/misc
             ${CMAKE_SOURCE_DIR}/Src/Librarys/lvgl/lvgl/src/draw
-            ${CMAKE_SOURCE_DIR}/Src/Librarys/lv_ui/inc
             ${CMAKE_SOURCE_DIR}/Src/Librarys/DataCenter
             ${CMAKE_SOURCE_DIR}/Src/Librarys/DataCenter/PingPongBuffer
             ${CMAKE_SOURCE_DIR}/Src/Drivers/ili9341
             ${CMAKE_SOURCE_DIR}/Src/Drivers/mpu6050
-            ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated
-            ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/guider_fonts
-            ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/generated/guider_customer_fonts
-            ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/dclock
-            ${CMAKE_SOURCE_DIR}/Src/App/gui-guider/custom
             ${CMAKE_SOURCE_DIR}/Src/App/tasks
             ${MAVLINK_LIBS}
 
 	)
-
-	if(${PROJECT} MATCHES "usb.*|acc.*")
-#		add_library(usbmiddleware_lib OBJECT ${USB_MIDDLEWARE_SOURCES})
-#		target_include_directories(usbmiddleware_lib PRIVATE
-#			${middleware_headers}
-#		)
-
-		#USB Middleware for USB Examples
-		file(GLOB_RECURSE USB_EXTRA_SOURCES
-		    "${AT_BSPACK_DIR}/middlewares/usbd_drivers/src/*.*"
-		)
-		target_sources(${TARGET} PRIVATE ${USB_EXTRA_SOURCES})
-
-		get_usb_depends(${PROJECT})
-		message( "Adding USB sources " ${FOUND_USB_DEPENDS})
-		foreach(D ${FOUND_USB_DEPENDS})
-			file(GLOB_RECURSE USB_EXTRA_SOURCES
-			    "${D}/*.c"
-			)	
-			target_sources(${TARGET} PRIVATE ${USB_EXTRA_SOURCES})
-		endforeach()
-
-#		target_sources(${TARGET} PRIVATE $<TARGET_OBJECTS:usbmiddleware_lib>)
-	endif()
 
 	set(HEX_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.hex)
 	set(BIN_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.bin)
