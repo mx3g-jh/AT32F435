@@ -1,12 +1,18 @@
 
 # flash
-add_custom_target(jlink_flash 
+add_custom_target(jlink_flash
+    COMMAND make -j14
     COMMAND JLinkExe -device ${MCU_NAME} -speed 4000 -if SWD -CommanderScript ${CMAKE_CURRENT_LIST_DIR}/jlink-flash-fw-standalone.jlink
 )
 
 # reset
 add_custom_target(jlink_reset 
     COMMAND JLinkExe -device ${MCU_NAME} -speed 4000 -if SWD -CommanderScript ${CMAKE_CURRENT_LIST_DIR}/scripts/jlink-reset-at32.jlink
+)
+
+# distclean
+add_custom_target(distclean 
+    COMMAND rm -r *
 )
 
 # GDB
