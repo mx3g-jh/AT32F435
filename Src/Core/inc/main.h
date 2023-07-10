@@ -12,8 +12,8 @@ extern "C" {
 #include "at32f435_437_clock.h"
 
 //bsp
-#include "timer.h"
-#include "ui.h"
+// #include "timer.h"
+// #include "ui.h"
 //hardware
 #include "bsp_spi_lcd.h"
 #include "ili9341.h"
@@ -27,8 +27,8 @@ extern "C" {
 
 #include "DataCenterLog.h"
 
-#include "events_init.h"
-#include "gui_guider.h"
+// #include "events_init.h"
+// #include "gui_guider.h"
 //middleware
 #include "FreeRTOS.h"
 #include "task.h"

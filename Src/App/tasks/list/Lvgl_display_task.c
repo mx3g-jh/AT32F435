@@ -21,7 +21,7 @@
 #include "main.h"
 #include "freertos_tasks.h"
 
-lv_ui guider_ui;
+// lv_ui guider_ui;
 
 void Lvgl_display_task(void *pvParameters)
 {
@@ -32,7 +32,6 @@ void Lvgl_display_task(void *pvParameters)
   lv_port_indev_init();
   // setup_ui(&guider_ui);
   // events_init(&guider_ui);
-  // ui_init();
   // lv_demo_benchmark();
   lv_demo_widgets();
 
