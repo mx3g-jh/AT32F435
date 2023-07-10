@@ -6,7 +6,7 @@ target_sources(freertos_lib
   ${CMAKE_CURRENT_SOURCE_DIR}/source/event_groups.c
   ${CMAKE_CURRENT_SOURCE_DIR}/source/croutine.c
   ${CMAKE_CURRENT_SOURCE_DIR}/source/portable/memmang/heap_4.c
-  ${CMAKE_CURRENT_SOURCE_DIR}/source/portable/common/mpu_wrappers.c
+  # ${CMAKE_CURRENT_SOURCE_DIR}/source/portable/common/mpu_wrappers.c
   ${CMAKE_CURRENT_SOURCE_DIR}/source/portable/GCC/ARM_CM4F/port.c
   ${CMAKE_CURRENT_SOURCE_DIR}/source/timers.c
   ${CMAKE_CURRENT_SOURCE_DIR}/source/queue.c
@@ -20,7 +20,7 @@ target_include_directories(freertos_lib
     ${CMAKE_CURRENT_SOURCE_DIR}/source/portable/GCC/ARM_CM4F
   PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/source
-    ${CMAKE_CURRENT_SOURCE_DIR}/source/portable/common
+    # ${CMAKE_CURRENT_SOURCE_DIR}/source/portable/common
     ${CMAKE_CURRENT_SOURCE_DIR}/source/portable/memmang
     ${CMAKE_CURRENT_SOURCE_DIR}/source/portable/GCC/ARM_CM4F
 )

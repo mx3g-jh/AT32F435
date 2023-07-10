@@ -18,7 +18,7 @@ set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
 set(AT_BSPACK_DIR ${CMAKE_SOURCE_DIR}/AT32F435_Firmware_Library)
 set(CMAKE_DIR ${CMAKE_SOURCE_DIR}/cmake)
-set(MCU_NAME -AT32F435CMU7)
+set(MCU_NAME AT32F435CMU7)
 
 # project settings
 project(at32f435proj C CXX ASM)
@@ -82,7 +82,7 @@ set(PROJECT
 
 	set(TARGET ${PROJECT_NAME}.elf)
 	add_executable(${TARGET}
-        ${CMAKE_SOURCE_DIR}/Src/Core/src/main.cpp
+        ${CMAKE_SOURCE_DIR}/main.cpp
 	)
 
 	message("Target added: " ${TARGET})
