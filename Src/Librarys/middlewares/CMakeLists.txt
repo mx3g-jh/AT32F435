@@ -1,0 +1,7 @@
+add_subdirectory(freertos)
+add_subdirectory(i2c_application)
+
+add_library(middlewares_lib IMPORTED STATIC)
+
+target_link_libraries(middlewares_lib INTERFACE freertos_lib)
+target_link_libraries(middlewares_lib INTERFACE i2c_application_lib)

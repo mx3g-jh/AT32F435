@@ -1,0 +1,51 @@
+add_library(at32f435_437_lib STATIC)
+
+target_sources(at32f435_437_lib
+  PRIVATE
+  ${CMAKE_CURRENT_SOURCE_DIR}/cmsis/cm4/device_support/startup/gcc/startup_at32f435_437.s
+  ${CMAKE_CURRENT_SOURCE_DIR}/cmsis/cm4/device_support/system_at32f435_437.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/drivers/src/at32f435_437_wwdt.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/drivers/src/at32f435_437_dac.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/drivers/src/at32f435_437_debug.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/drivers/src/at32f435_437_i2c.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/drivers/src/at32f435_437_scfg.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/drivers/src/at32f435_437_gpio.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/drivers/src/at32f435_437_qspi.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/drivers/src/at32f435_437_misc.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/drivers/src/at32f435_437_usb.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/drivers/src/at32f435_437_sdio.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/drivers/src/at32f435_437_emac.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/drivers/src/at32f435_437_ertc.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/drivers/src/at32f435_437_edma.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/drivers/src/at32f435_437_dma.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/drivers/src/at32f435_437_can.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/drivers/src/at32f435_437_usart.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/drivers/src/at32f435_437_wdt.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/drivers/src/at32f435_437_xmc.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/drivers/src/at32f435_437_dvp.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/drivers/src/at32f435_437_spi.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/drivers/src/at32f435_437_crm.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/drivers/src/at32f435_437_exint.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/drivers/src/at32f435_437_pwc.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/drivers/src/at32f435_437_adc.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/drivers/src/at32f435_437_crc.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/drivers/src/at32f435_437_flash.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/drivers/src/at32f435_437_acc.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/drivers/src/at32f435_437_tmr.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/config/src/at32f435_437_clock.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/config/src/at32f435_437_int.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/config/src/at32f435_437_board.c
+)
+
+target_include_directories(at32f435_437_lib
+  PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/drivers/inc
+    ${CMAKE_CURRENT_SOURCE_DIR}/config/inc
+    ${CMAKE_CURRENT_SOURCE_DIR}/cmsis/cm4/device_support
+    ${CMAKE_CURRENT_SOURCE_DIR}/cmsis/cm4/core_support
+  PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/config/src
+    ${CMAKE_CURRENT_SOURCE_DIR}/drivers/src
+    ${CMAKE_CURRENT_SOURCE_DIR}/cmsis/cm4/device_support
+    ${CMAKE_CURRENT_SOURCE_DIR}/cmsis/cm4/device_support/startup/gcc
+)
